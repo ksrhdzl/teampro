@@ -1,0 +1,52 @@
+fragment UserFields on User {
+  id
+  metadata
+  createdAt
+  updatedAt
+  deletedAt
+  version
+  name
+  slug
+  email
+}
+
+query User($userId: ID!) {
+  user(id: $userId) {
+    ...UserFields
+  }
+}
+
+query Users(
+  $sorting: [UserSort!]!
+  $filter: UserFilter!
+  $paging: OffsetPaging!
+) {
+  users(sorting: $sorting, filter: $filter, paging: $paging) {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
+    nodes {
+      ...UserFields
+    }
+    totalCount
+  }
+}
+
+mutation CreateUser($input: CreateOneUserInput!) {
+  createUser(input: $input) {
+    ...UserFields
+  }
+}
+
+mutation UpdateUser($input: UpdateOneUserInput!) {
+  updateUser(input: $input) {
+    ...UserFields
+  }
+}
+
+mutation DeleteUser($input: DeleteOneUserInput!) {
+  deleteUser(input: $input) {
+    id
+  }
+}

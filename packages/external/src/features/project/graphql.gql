@@ -1,0 +1,142 @@
+fragment ProjectFields on Project {
+  id
+  metadata
+  createdAt
+  updatedAt
+  deletedAt
+  version
+  name
+  slug
+  description
+  workspaceId
+  workspace {
+    ...WorkspaceFields
+  }
+}
+
+query Project($projectId: ID!) {
+  project(id: $projectId) {
+    ...ProjectFields
+  }
+}
+
+query ProjectIssues(
+  $projectId: ID!
+  $sorting: [IssueSort!]!
+  $filter: IssueFilter!
+  $paging: OffsetPaging!
+) {
+  project(id: $projectId) {
+    ...ProjectFields
+    issues(paging: $paging, filter: $filter, sorting: $sorting) {
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+      }
+      nodes {
+        ...IssueFields
+      }
+    }
+  }
+}
+
+query Projects(
+  $sorting: [ProjectSort!]!
+  $filter: ProjectFilter!
+  $paging: OffsetPaging!
+) {
+  projects(sorting: $sorting, filter: $filter, paging: $paging) {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
+    nodes {
+      ...ProjectFields
+    }
+    totalCount
+  }
+}
+
+mutation CreateProject($input: CreateOneProjectInput!) {
+  createProject(input: $input) {
+    ...ProjectFields
+  }
+}
+
+mutation UpdateProject($input: UpdateOneProjectInput!) {
+  updateProject(input: $input) {
+    ...ProjectFields
+  }
+}
+
+mutation DeleteProject($input: DeleteOneProjectInput!) {
+  deleteProject(input: $input) {
+    id
+  }
+}
+
+# ---
+fragment MemberProjectFields on MemberProject {
+  id
+  metadata
+  createdAt
+  updatedAt
+  deletedAt
+  version
+  memberId
+  projectId
+  role
+}
+
+query MemberProject($memberProjectId: ID!) {
+  memberProject(id: $memberProjectId) {
+    ...MemberProjectFields
+    member {
+      ...MemberFields
+    }
+    project {
+      ...ProjectFields
+    }
+  }
+}
+
+query MemberProjects(
+  $sorting: [MemberProjectSort!]!
+  $filter: MemberProjectFilter!
+  $paging: OffsetPaging!
+) {
+  memberProjects(sorting: $sorting, filter: $filter, paging: $paging) {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
+    nodes {
+      ...MemberProjectFields
+      member {
+        ...MemberFields
+      }
+      project {
+        ...ProjectFields
+      }
+    }
+    totalCount
+  }
+}
+
+mutation CreateMemberProject($input: CreateOneMemberProjectInput!) {
+  createMemberProject(input: $input) {
+    ...MemberProjectFields
+  }
+}
+
+mutation UpdateMemberProject($input: UpdateOneMemberProjectInput!) {
+  updateMemberProject(input: $input) {
+    ...MemberProjectFields
+  }
+}
+
+mutation DeleteMemberProject($input: DeleteOneMemberProjectInput!) {
+  deleteMemberProject(input: $input) {
+    id
+  }
+}

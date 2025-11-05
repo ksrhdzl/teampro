@@ -1,0 +1,19 @@
+[package]
+name = "internal"
+version = "0.0.0"
+edition.workspace = true
+authors.workspace = true
+
+[[bin]]
+name = "main"
+path = "./src/main.rs"
+
+[lib]
+name = "lib"
+path = "./src/lib.rs"
+
+[dependencies]
+serde.workspace = true
+tokio.workspace = true
+general.workspace = true
+axum.workspace = true

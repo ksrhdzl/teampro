@@ -1,0 +1,6 @@
+mutation PresignedAsset {
+  presignedAsset {
+    name
+    link
+  }
+}
