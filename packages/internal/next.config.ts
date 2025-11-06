@@ -2,8 +2,10 @@ import type { NextConfig } from 'next';
 
 export default {
   reactStrictMode: true,
+  reactCompiler: true,
   distDir: 'dist',
   output: 'standalone',
+  typescript: { ignoreBuildErrors: true },
   images: {
     remotePatterns: [
       {
@@ -14,7 +16,10 @@ export default {
       },
     ],
   },
-  eslint: {
-    ignoreDuringBuilds: true,
+  experimental: {
+    // ppr: true,
+    // useCache: true,
+    typedRoutes: true,
   },
+  // trailingSlash: true,
 } satisfies NextConfig;
