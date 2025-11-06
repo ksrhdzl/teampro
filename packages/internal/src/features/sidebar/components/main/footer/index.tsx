@@ -1,3 +1,4 @@
+import { ChevronRightIcon, SettingsIcon } from 'lucide-react';
 import {
   SidebarFooter,
   SidebarMenu,
@@ -5,10 +6,10 @@ import {
   SidebarMenuItem,
   SidebarSeparator,
 } from '@/components/sidebar';
-import { Profile } from './profile';
-import { Logout } from './logout';
-import { ChevronRightIcon, SettingsIcon } from 'lucide-react';
 import { useSidebar } from '@/features/sidebar/hooks';
+
+import { Logout } from './logout';
+import { Profile } from './profile';
 
 export const Footer = () => {
   const { sidebar, setSidebar } = useSidebar();

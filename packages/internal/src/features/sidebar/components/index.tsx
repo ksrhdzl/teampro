@@ -2,8 +2,9 @@
 
 import * as React from 'react';
 import { Sidebar } from '@/components/sidebar';
-import { Main } from './main';
+
 import { useSidebar } from '../hooks';
+import { Main } from './main';
 import { Settings } from './settings';
 
 export const SidebarComponent = ({

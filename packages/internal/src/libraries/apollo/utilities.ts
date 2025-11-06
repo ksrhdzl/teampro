@@ -1,5 +1,5 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { concat, HttpLink } from '@apollo/client';
+import { ApolloClient, concat, HttpLink, InMemoryCache } from '@apollo/client';
+
 import { authMiddleware } from './middlewares';
 
 let apolloClient: ApolloClient<any> | undefined = undefined;

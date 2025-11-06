@@ -1,9 +1,9 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { ChevronRight, Loader2, TriangleAlert } from 'lucide-react';
 import { Avatar, AvatarFallback } from '@/components/avatar';
 import { SidebarMenuButton } from '@/components/sidebar';
-import { useRouter } from 'next/navigation';
 import { useAccountQuery } from '@/libraries/graphql';
 
 export const Profile = () => {
@@ -15,16 +15,16 @@ export const Profile = () => {
 
   if (loadingAccount) {
     return (
-      <div className="bg-muted flex h-12 w-full flex-row items-center justify-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm">
-        <Loader2 className="text-muted-foreground size-4 animate-spin" />
+      <div className="flex h-12 w-full flex-row items-center justify-center gap-2 overflow-hidden rounded-md bg-muted p-2 text-left text-sm">
+        <Loader2 className="size-4 animate-spin text-muted-foreground" />
       </div>
     );
   }
 
   if (errorAccount) {
     return (
-      <div className="bg-muted flex h-12 w-full flex-row items-center justify-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm">
-        <TriangleAlert className="text-muted-foreground size-4" />
+      <div className="flex h-12 w-full flex-row items-center justify-center gap-2 overflow-hidden rounded-md bg-muted p-2 text-left text-sm">
+        <TriangleAlert className="size-4 text-muted-foreground" />
       </div>
     );
   }

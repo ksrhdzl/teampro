@@ -1,5 +1,5 @@
-import Quill from 'quill';
 import { useEffect, useRef, useState } from 'react';
+import Quill from 'quill';
 
 const Renderer = ({ value }: { value: string }) => {
   const [isEmpty, setIsEmpty] = useState(false);

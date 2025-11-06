@@ -1,9 +1,9 @@
 'use client';
 
-import { Header } from './header';
 import { Content } from './content';
-import { Separator } from './separator';
 import { Footer } from './footer';
+import { Header } from './header';
+import { Separator } from './separator';
 
 export const Main = () => {
   return (

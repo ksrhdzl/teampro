@@ -3,9 +3,8 @@
 import * as React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { DayPicker } from 'react-day-picker';
-
-import { cn } from '@/libraries/utilities';
 import { buttonVariants } from '@/components/button';
+import { cn } from '@/libraries/utilities';
 
 function Calendar({
   className,

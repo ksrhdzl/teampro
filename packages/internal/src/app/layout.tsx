@@ -1,10 +1,10 @@
-import { inter } from '@/libraries/utilities';
-import { Providers } from '@/libraries/providers';
 import { Metadata, Viewport } from 'next';
 import Document, {
   metadata as metadataDefault,
   viewport as viewportDefault,
 } from '@/app/document';
+import { Providers } from '@/libraries/providers';
+import { inter } from '@/libraries/utilities';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

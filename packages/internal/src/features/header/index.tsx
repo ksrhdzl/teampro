@@ -1,5 +1,10 @@
 'use client';
 
+// import CrmErpNotificationPage from '@/features/notification/components/qd';
+import { Fragment } from 'react';
+import Link from 'next/link';
+import { useAtom, useAtomValue } from 'jotai';
+import { BellIcon } from 'lucide-react';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,27 +13,22 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/breadcrumb';
-import { SidebarTrigger } from '@/components/sidebar';
-
-// import CrmErpNotificationPage from '@/features/notification/components/qd';
-import { Fragment } from 'react';
-import Link from 'next/link';
 import { Button } from '@/components/button';
-import { BellIcon } from 'lucide-react';
-import { Command } from './command';
-import { useAtom, useAtomValue } from 'jotai';
-import { breadcrumbAtom, notificationAtom } from '@/libraries/jotai/atoms';
 import { Drawer, DrawerContent, DrawerTrigger } from '@/components/drawer';
+import { SidebarTrigger } from '@/components/sidebar';
+import { breadcrumbAtom, notificationAtom } from '@/libraries/jotai/atoms';
+
+import { Command } from './command';
 
 export const Header = () => {
   const breadcrumb = useAtomValue(breadcrumbAtom);
   const [notification, setNotification] = useAtom(notificationAtom);
 
   return (
-    <header className="bg-background sticky top-0 z-10 flex h-16 shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
+    <header className="sticky top-0 z-10 flex h-16 shrink-0 items-center gap-2 border-b bg-background transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
       <div className="flex flex-1 items-center gap-2 px-3">
         <SidebarTrigger />
-        <div className="bg-border mr-2 h-4 w-px" />
+        <div className="mr-2 h-4 w-px bg-border" />
         <Breadcrumb>
           <BreadcrumbList>
             {breadcrumb?.map((item, index) => (
@@ -84,7 +84,7 @@ export const Header = () => {
                   } as React.CSSProperties
                 }
               >
-                <div className="bg-background flex h-full w-full flex-col overflow-hidden shadow-sm sm:rounded-2xl">
+                <div className="flex h-full w-full flex-col overflow-hidden bg-background shadow-sm sm:rounded-2xl">
                   {/* <CrmErpNotificationPage /> */}
                 </div>
               </div>

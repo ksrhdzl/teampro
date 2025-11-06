@@ -1,3 +1,6 @@
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { ChevronRightIcon, FolderIcon, PlusIcon } from 'lucide-react';
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -11,9 +14,6 @@ import {
   useProjectsQuery,
   useWorkspaceQuery,
 } from '@/libraries/graphql';
-import { ChevronRightIcon, FolderIcon, PlusIcon } from 'lucide-react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
 export const Workspaces = () => {
   const pathname = usePathname();

@@ -1,4 +1,5 @@
 import { SidebarContent } from '@/components/sidebar';
+
 import { Main } from './main';
 import { Workspaces } from './workspaces';
 

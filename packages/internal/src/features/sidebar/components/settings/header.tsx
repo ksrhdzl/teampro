@@ -1,10 +1,10 @@
+import { ChevronLeftIcon, LucideIcon } from 'lucide-react';
 import {
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/sidebar';
-import { ChevronLeftIcon, LucideIcon } from 'lucide-react';
 import { useSidebar } from '@/features/sidebar/hooks';
 
 export const Header = () => {
