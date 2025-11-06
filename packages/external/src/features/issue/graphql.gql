@@ -1,0 +1,136 @@
+fragment IssueFields on Issue {
+  id
+  metadata
+  createdAt
+  updatedAt
+  deletedAt
+  version
+  name
+  slug
+  startAt
+  status
+  endAt
+  description
+  workspaceId
+  projectId
+  position
+  workspace {
+    ...WorkspaceFields
+  }
+}
+
+query Issue($issueId: ID!) {
+  issue(id: $issueId) {
+    ...IssueFields
+    project {
+      ...ProjectFields
+    }
+  }
+}
+
+query Issues(
+  $sorting: [IssueSort!]!
+  $filter: IssueFilter!
+  $paging: OffsetPaging!
+) {
+  issues(sorting: $sorting, filter: $filter, paging: $paging) {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
+    nodes {
+      ...IssueFields
+      project {
+        ...ProjectFields
+      }
+    }
+    totalCount
+  }
+}
+
+mutation CreateIssue($input: CreateOneIssueInput!) {
+  createIssue(input: $input) {
+    ...IssueFields
+  }
+}
+
+mutation UpdateIssue($input: UpdateOneIssueInput!) {
+  updateIssue(input: $input) {
+    ...IssueFields
+  }
+}
+
+mutation DeleteIssue($input: DeleteOneIssueInput!) {
+  deleteIssue(input: $input) {
+    id
+  }
+}
+
+# ---
+fragment MemberIssueFields on MemberIssue {
+  id
+  metadata
+  createdAt
+  updatedAt
+  deletedAt
+  version
+  memberId
+  issueId
+  role
+}
+
+query MemberIssue($memberIssueId: ID!) {
+  memberIssue(id: $memberIssueId) {
+    ...MemberIssueFields
+    member {
+      ...MemberFields
+    }
+    issue {
+      ...IssueFields
+    }
+  }
+}
+
+query MemberIssues(
+  $sorting: [MemberIssueSort!]!
+  $filter: MemberIssueFilter!
+  $paging: OffsetPaging!
+) {
+  memberIssues(sorting: $sorting, filter: $filter, paging: $paging) {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
+    nodes {
+      ...MemberIssueFields
+      member {
+        ...MemberFields
+      }
+      issue {
+        ...IssueFields
+        project {
+          ...ProjectFields
+        }
+      }
+    }
+    totalCount
+  }
+}
+
+mutation CreateMemberIssue($input: CreateOneMemberIssueInput!) {
+  createMemberIssue(input: $input) {
+    ...MemberIssueFields
+  }
+}
+
+mutation UpdateMemberIssue($input: UpdateOneMemberIssueInput!) {
+  updateMemberIssue(input: $input) {
+    ...MemberIssueFields
+  }
+}
+
+mutation DeleteMemberIssue($input: DeleteOneMemberIssueInput!) {
+  deleteMemberIssue(input: $input) {
+    id
+  }
+}

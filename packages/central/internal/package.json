@@ -1,0 +1,12 @@
+{
+  "name": "central-internal",
+  "scripts": {
+    "build": "cargo build --release",
+    "dev": "cargo run",
+    "lint": "cargo clippy -- -D warnings",
+    "lint:fix": "cargo clippy --fix --allow-dirty --allow-staged",
+    "format": "cargo fmt -- --check",
+    "format:fix": "cargo fmt",
+    "check": "cargo check"
+  }
+}

@@ -1,0 +1,67 @@
+name: central-general
+
+on:
+  push:
+    branches:
+      - "main"
+    paths:
+      - "packages/central/general/**"
+    tags:
+      - "v*"
+  pull_request:
+    branches:
+      - "main"
+    paths:
+      - "packages/central/general/**"
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: ./.github/actions/setup-node
+
+      - name: Install dependencies
+        run: yarn workspaces focus ${{github.workflow}}
+
+      - name: Run audit
+        run: yarn workspace ${{github.workflow}} npm audit
+
+  lint:
+    needs:
+      - audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: ./.github/actions/setup-node
+
+      - name: Install dependencies
+        run: yarn workspaces focus ${{github.workflow}}
+
+      - name: Run lint
+        run: yarn workspace ${{github.workflow}} run lint
+
+  build:
+    needs:
+      - lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: ./.github/actions/setup-node
+
+      - name: Install dependencies
+        run: yarn workspaces focus ${{github.workflow}}
+
+      - name: Run build
+        run: yarn dlx turbo run build --filter=${{github.workflow}}

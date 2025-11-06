@@ -1,0 +1,58 @@
+fragment MemberFields on Member {
+  id
+  metadata
+  createdAt
+  updatedAt
+  deletedAt
+  version
+  workspaceId
+  role
+  userId
+  workspace {
+    ...WorkspaceFields
+  }
+  user {
+    ...UserFields
+  }
+}
+
+query Member($memberId: ID!) {
+  member(id: $memberId) {
+    ...MemberFields
+  }
+}
+
+query Members(
+  $sorting: [MemberSort!]!
+  $filter: MemberFilter!
+  $paging: OffsetPaging!
+) {
+  members(sorting: $sorting, filter: $filter, paging: $paging) {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
+    nodes {
+      ...MemberFields
+    }
+    totalCount
+  }
+}
+
+mutation CreateMember($input: CreateOneMemberInput!) {
+  createMember(input: $input) {
+    ...MemberFields
+  }
+}
+
+mutation UpdateMember($input: UpdateOneMemberInput!) {
+  updateMember(input: $input) {
+    ...MemberFields
+  }
+}
+
+mutation DeleteMember($input: DeleteOneMemberInput!) {
+  deleteMember(input: $input) {
+    id
+  }
+}

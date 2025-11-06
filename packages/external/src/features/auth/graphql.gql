@@ -1,0 +1,22 @@
+query Account {
+  account {
+    id
+    metadata
+    createdAt
+    updatedAt
+    deletedAt
+    version
+    email
+    name
+  }
+}
+
+mutation Login($input: AuthInput!) {
+  login(input: $input) {
+    token
+  }
+}
+
+mutation Logout {
+  logout
+}

@@ -1,0 +1,185 @@
+fragment ConversationFields on Conversation {
+  id
+  metadata
+  createdAt
+  updatedAt
+  deletedAt
+  version
+  name
+  type
+  slug
+  description
+  workspaceId
+  workspace {
+    ...WorkspaceFields
+  }
+  messages {
+    ...MessageFields
+  }
+}
+
+query Conversation($conversationId: ID!) {
+  conversation(id: $conversationId) {
+    ...ConversationFields
+  }
+}
+
+query Conversations(
+  $sorting: [ConversationSort!]!
+  $filter: ConversationFilter!
+  $paging: OffsetPaging!
+) {
+  conversations(sorting: $sorting, filter: $filter, paging: $paging) {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
+    nodes {
+      ...ConversationFields
+    }
+    totalCount
+  }
+}
+
+mutation CreateConversation($input: CreateOneConversationInput!) {
+  createConversation(input: $input) {
+    ...ConversationFields
+  }
+}
+
+mutation UpdateConversation($input: UpdateOneConversationInput!) {
+  updateConversation(input: $input) {
+    ...ConversationFields
+  }
+}
+
+fragment MessageFields on Message {
+  id
+  metadata
+  createdAt
+  updatedAt
+  deletedAt
+  version
+  content
+  type
+  workspaceId
+  workspace {
+    ...WorkspaceFields
+  }
+  memberId
+  member {
+    ...MemberFields
+  }
+}
+
+query Message($messageId: ID!) {
+  message(id: $messageId) {
+    ...MessageFields
+    conversations {
+      ...ConversationFields
+    }
+  }
+}
+
+query Messages(
+  $sorting: [MessageSort!]!
+  $filter: MessageFilter!
+  $paging: CursorPaging!
+) {
+  messages(sorting: $sorting, filter: $filter, paging: $paging) {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    edges {
+      node {
+        ...MessageFields
+        conversations {
+          ...ConversationFields
+        }
+      }
+      cursor
+    }
+    totalCount
+  }
+}
+
+mutation CreateMessage($input: CreateOneMessageInput!) {
+  createMessage(input: $input) {
+    ...MessageFields
+  }
+}
+
+mutation UpdateMessage($input: UpdateOneMessageInput!) {
+  updateMessage(input: $input) {
+    ...MessageFields
+  }
+}
+
+# ---
+fragment MemberConversationFields on MemberConversation {
+  id
+  metadata
+  createdAt
+  updatedAt
+  deletedAt
+  version
+  memberId
+  conversationId
+  role
+}
+
+query MemberConversation($memberConversationId: ID!) {
+  memberConversation(id: $memberConversationId) {
+    ...MemberConversationFields
+    member {
+      ...MemberFields
+    }
+    conversation {
+      ...ConversationFields
+    }
+  }
+}
+
+query MemberConversations(
+  $sorting: [MemberConversationSort!]!
+  $filter: MemberConversationFilter!
+  $paging: OffsetPaging!
+) {
+  memberConversations(sorting: $sorting, filter: $filter, paging: $paging) {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
+    nodes {
+      ...MemberConversationFields
+      member {
+        ...MemberFields
+      }
+      conversation {
+        ...ConversationFields
+      }
+    }
+    totalCount
+  }
+}
+
+mutation CreateMemberConversation($input: CreateOneMemberConversationInput!) {
+  createMemberConversation(input: $input) {
+    ...MemberConversationFields
+  }
+}
+
+mutation UpdateMemberConversation($input: UpdateOneMemberConversationInput!) {
+  updateMemberConversation(input: $input) {
+    ...MemberConversationFields
+  }
+}
+
+mutation DeleteMemberConversation($input: DeleteOneMemberConversationInput!) {
+  deleteMemberConversation(input: $input) {
+    id
+  }
+}

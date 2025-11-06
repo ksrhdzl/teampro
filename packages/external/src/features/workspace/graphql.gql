@@ -1,0 +1,53 @@
+fragment WorkspaceFields on Workspace {
+  id
+  metadata
+  createdAt
+  updatedAt
+  deletedAt
+  version
+  name
+  slug
+  description
+  image
+}
+
+query Workspace($workspaceId: ID!) {
+  workspace(id: $workspaceId) {
+    ...WorkspaceFields
+  }
+}
+
+query Workspaces(
+  $sorting: [WorkspaceSort!]!
+  $filter: WorkspaceFilter!
+  $paging: OffsetPaging!
+) {
+  workspaces(sorting: $sorting, filter: $filter, paging: $paging) {
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
+    nodes {
+      ...WorkspaceFields
+    }
+    totalCount
+  }
+}
+
+mutation CreateWorkspace($input: CreateOneWorkspaceInput!) {
+  createWorkspace(input: $input) {
+    ...WorkspaceFields
+  }
+}
+
+mutation UpdateWorkspace($input: UpdateOneWorkspaceInput!) {
+  updateWorkspace(input: $input) {
+    ...WorkspaceFields
+  }
+}
+
+mutation DeleteWorkspace($input: DeleteOneWorkspaceInput!) {
+  deleteWorkspace(input: $input) {
+    id
+  }
+}

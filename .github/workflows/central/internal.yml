@@ -1,0 +1,24 @@
+name: central-internal
+
+on:
+  push:
+    branches:
+      - "main"
+    paths:
+      - "packages/central/internal/**"
+    tags:
+      - "v*"
+  pull_request:
+    branches:
+      - "main"
+    paths:
+      - "packages/central/internal/**"
+  workflow_dispatch:
+
+jobs:
+  general:
+    uses: ./.github/workflows/central/general.yml
+
+  audit:
+    runs-on: ubuntu-latest
+    needs: general
