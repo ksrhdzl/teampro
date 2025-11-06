@@ -1,8 +1,7 @@
 import { Loader } from 'lucide-react';
-
 import { Card, CardContent } from '@/components/card';
-
 import { useMemberQuery } from '@/libraries/graphql';
+
 import { EditMemberForm } from './edit-member-form';
 
 export const EditMemberFormWrapper = ({
@@ -25,7 +24,7 @@ export const EditMemberFormWrapper = ({
     return (
       <Card className="h-[714px] w-full border-none shadow-none">
         <CardContent className="flex h-full items-center justify-center">
-          <Loader className="text-muted-foreground size-5 animate-spin" />
+          <Loader className="size-5 animate-spin text-muted-foreground" />
         </CardContent>
       </Card>
     );

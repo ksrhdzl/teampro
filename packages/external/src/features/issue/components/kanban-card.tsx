@@ -1,11 +1,10 @@
 import { MoreHorizontal } from 'lucide-react';
-
-import { TaskDate } from './task-date';
-import { TaskActions } from './task-actions';
-
-import { Issue } from '@/libraries/graphql';
 import { MemberAvatar } from '@/features/member/components/member-avatar';
 import { ProjectAvatar } from '@/features/project/components/project-avatar';
+import { Issue } from '@/libraries/graphql';
+
+import { TaskActions } from './task-actions';
+import { TaskDate } from './task-date';
 
 export const KanbanCard = ({ task }: { task: Issue }) => {
   return (

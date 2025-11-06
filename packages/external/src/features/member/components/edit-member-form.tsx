@@ -1,5 +1,10 @@
 'use client';
 
+import { useParams } from 'next/navigation';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+import { Button } from '@/components/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/card';
 import {
   Form,
@@ -9,10 +14,6 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useParams } from 'next/navigation';
-import { useForm } from 'react-hook-form';
-import { UpdateMember, updateMemberSchema } from '../schemas';
 import { Input } from '@/components/input';
 import {
   Select,
@@ -29,9 +30,9 @@ import {
   useUpdateMemberMutation,
   useUpdateUserMutation,
 } from '@/libraries/graphql';
-import { Button } from '@/components/button';
 import { cn } from '@/libraries/utilities';
-import { toast } from 'sonner';
+
+import { UpdateMember, updateMemberSchema } from '../schemas';
 
 export const EditMemberForm = ({
   onCancel,

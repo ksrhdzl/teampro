@@ -1,11 +1,13 @@
 'use server';
 
+import { SidebarInset, SidebarProvider } from '@/components/sidebar';
 import { Header } from '@/features/header';
 import { SidebarComponent as Sidebar } from '@/features/sidebar/components';
-import { SidebarInset, SidebarProvider } from '@/components/sidebar';
-import {} from '@/components/sidebar';
-import { verifySession } from '@/libraries/utilities';
+
+import '@/components/sidebar';
+
 import { redirect, RedirectType } from 'next/navigation';
+import { verifySession } from '@/libraries/utilities';
 
 export default async function Layout({
   children,

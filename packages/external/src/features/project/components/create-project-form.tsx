@@ -1,12 +1,11 @@
 'use client';
 
 import 'client-only';
+
 import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
 import { useParams, useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
-
-import { Input } from '@/components/input';
+import { useForm } from 'react-hook-form';
 import { Button } from '@/components/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/card';
 import {
@@ -17,16 +16,17 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/form';
-
-import { CreateProject, createProjectSchema } from '../schemas';
-import { cn } from '@/libraries/utilities';
-import slugify from '@/libraries/utilities/slugify.utility';
+import { Input } from '@/components/input';
 import {
   MemberProjectsDocument,
   ProjectsDocument,
   useCreateProjectMutation,
   useWorkspaceQuery,
 } from '@/libraries/graphql';
+import { cn } from '@/libraries/utilities';
+import slugify from '@/libraries/utilities/slugify.utility';
+
+import { CreateProject, createProjectSchema } from '../schemas';
 
 interface CreateProjectFormProps {
   onCancel?: () => void;

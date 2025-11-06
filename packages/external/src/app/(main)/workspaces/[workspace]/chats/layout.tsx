@@ -1,11 +1,12 @@
 'use client';
 
+import { useParams } from 'next/navigation';
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from '@/components/resizable';
-import { useParams } from 'next/navigation';
+
 import { Sidebaro } from './sidebar';
 
 // import { Thread } from "@/features/messages/components/thread";

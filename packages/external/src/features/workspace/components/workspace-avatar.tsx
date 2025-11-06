@@ -1,8 +1,6 @@
 import Image from 'next/image';
-
-import { cn } from '@/libraries/utilities';
-
 import { Avatar, AvatarFallback } from '@/components/avatar';
+import { cn } from '@/libraries/utilities';
 
 interface WorkspaceAvatarProps {
   image?: string;

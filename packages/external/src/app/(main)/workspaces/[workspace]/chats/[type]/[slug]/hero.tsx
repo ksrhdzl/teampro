@@ -1,7 +1,7 @@
 'use client';
 
-import { Avatar, AvatarFallback } from '@/components/avatar';
 import { format } from 'date-fns';
+import { Avatar, AvatarFallback } from '@/components/avatar';
 
 export const Hero = ({
   name,

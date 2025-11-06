@@ -1,8 +1,8 @@
 'use client';
 
-import Quill from 'quill';
-import dynamic from 'next/dynamic';
 import { useRef, useState } from 'react';
+import dynamic from 'next/dynamic';
+import Quill from 'quill';
 
 const Editor = dynamic(() => import('@/components/editor'), { ssr: false });
 

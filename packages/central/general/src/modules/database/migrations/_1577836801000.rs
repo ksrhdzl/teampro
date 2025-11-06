@@ -1,9 +1,9 @@
-use sqlx::Executor;
+use sqlx::{Executor, Pool, Postgres};
 
 pub const NAME: &str = "1577836801000";
 
-pub async fn up<'e, E: Executor<'e>>(ex: E) -> sqlx::Result<()> {
-    ex.execute(
+pub async fn up(pool: &Pool<Postgres>) -> sqlx::Result<()> {
+    pool.execute(
         r#"
         CREATE TABLE asset (
             id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -18,12 +18,12 @@ pub async fn up<'e, E: Executor<'e>>(ex: E) -> sqlx::Result<()> {
             source VARCHAR NOT NULL,
             type VARCHAR,
             size VARCHAR
-        )
+        )   
     "#,
     )
     .await?;
 
-    ex.execute(
+    pool.execute(
         r#"
         CREATE TABLE workspace (
             id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -41,7 +41,7 @@ pub async fn up<'e, E: Executor<'e>>(ex: E) -> sqlx::Result<()> {
     )
     .await?;
 
-    ex.execute(
+    pool.execute(
         r#"
         CREATE TABLE "user" (
             id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -76,7 +76,7 @@ pub async fn up<'e, E: Executor<'e>>(ex: E) -> sqlx::Result<()> {
     // @OneToMany(() => SessionEntity, (session) => session.userId)
     // sessions!: SessionEntity[];
 
-    ex.execute(
+    pool.execute(
         r#"
         CREATE TABLE session (
             id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -95,7 +95,7 @@ pub async fn up<'e, E: Executor<'e>>(ex: E) -> sqlx::Result<()> {
     )
     .await?;
 
-    ex.execute(
+    pool.execute(
         r#"
         CREATE TYPE role_status_enum AS ENUM ('active', 'inactive');
         
@@ -116,7 +116,7 @@ pub async fn up<'e, E: Executor<'e>>(ex: E) -> sqlx::Result<()> {
     )
     .await?;
 
-    ex.execute(
+    pool.execute(
         r#"
         CREATE TYPE operator_status_enum AS ENUM ('active', 'inactive');
         
@@ -137,7 +137,7 @@ pub async fn up<'e, E: Executor<'e>>(ex: E) -> sqlx::Result<()> {
     )
     .await?;
 
-    ex.execute(
+    pool.execute(
         r#"
         CREATE TABLE role_operator (
             role_id INT NOT NULL,
@@ -151,7 +151,7 @@ pub async fn up<'e, E: Executor<'e>>(ex: E) -> sqlx::Result<()> {
     )
     .await?;
 
-    ex.execute(
+    pool.execute(
         r#"
         CREATE TABLE project (
             id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -171,7 +171,7 @@ pub async fn up<'e, E: Executor<'e>>(ex: E) -> sqlx::Result<()> {
     )
     .await?;
 
-    ex.execute(
+    pool.execute(
         r#"
         CREATE TABLE message (
             id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -196,7 +196,7 @@ pub async fn up<'e, E: Executor<'e>>(ex: E) -> sqlx::Result<()> {
     )
     .await?;
 
-    ex.execute(
+    pool.execute(
         r#"
         CREATE TABLE message_conversation (
             message_id INT NOT NULL,
@@ -211,7 +211,7 @@ pub async fn up<'e, E: Executor<'e>>(ex: E) -> sqlx::Result<()> {
     .await?;
 
     //   ADMIN //   MODERATOR //   GUEST
-    ex.execute(
+    pool.execute(
         r#"
         CREATE TYPE member_role_enum AS ENUM ('manager', 'member');
         
@@ -233,7 +233,7 @@ pub async fn up<'e, E: Executor<'e>>(ex: E) -> sqlx::Result<()> {
     )
     .await?;
 
-    ex.execute(
+    pool.execute(
         r#"
         CREATE TYPE member_project_role_enum AS ENUM ('manager', 'member');
         
@@ -254,7 +254,7 @@ pub async fn up<'e, E: Executor<'e>>(ex: E) -> sqlx::Result<()> {
     )
     .await?;
 
-    ex.execute(
+    pool.execute(
         r#"
         CREATE TYPE member_issue_role_enum AS ENUM ('manager', 'member');
         
@@ -275,7 +275,7 @@ pub async fn up<'e, E: Executor<'e>>(ex: E) -> sqlx::Result<()> {
     )
     .await?;
 
-    ex.execute(
+    pool.execute(
         r#"
         CREATE TYPE member_conversation_role_enum AS ENUM ('manager', 'member');
         
@@ -296,7 +296,7 @@ pub async fn up<'e, E: Executor<'e>>(ex: E) -> sqlx::Result<()> {
     )
     .await?;
 
-    ex.execute(
+    pool.execute(
         r#"
         CREATE TYPE issue_status_enum AS ENUM ('backlog', 'todo', 'in progress', 'in review', 'done');
         
@@ -325,7 +325,7 @@ pub async fn up<'e, E: Executor<'e>>(ex: E) -> sqlx::Result<()> {
     )
     .await?;
 
-    ex.execute(
+    pool.execute(
         r#"
         CREATE TYPE conversation_type_enum AS ENUM ('chat', 'call', 'meet', 'group', 'channel');
         
@@ -350,7 +350,7 @@ pub async fn up<'e, E: Executor<'e>>(ex: E) -> sqlx::Result<()> {
     Ok(())
 }
 
-pub async fn down<'e, E: Executor<'e>>(ex: E) -> sqlx::Result<()> {
-    ex.execute("DROP TABLE mmmobina").await?;
+pub async fn down(pool: &Pool<Postgres>) -> sqlx::Result<()> {
+    pool.execute("DROP TABLE mmmobina").await?;
     Ok(())
 }

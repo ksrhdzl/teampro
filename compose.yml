@@ -1,11 +1,5 @@
 services:
   # ---------------------------------
-  nats:
-    container_name: nats
-    image: nats:alpine
-    ports:
-      - "8222:8222"
-
   postgres:
     container_name: postgres
     image: postgres
@@ -58,7 +52,6 @@ services:
         required: true
     command: ["/bin/sh", "-c", "yarn dev"]
     depends_on:
-      - nats
       - postgres
       - redis
 
@@ -91,7 +84,6 @@ services:
         required: true
     command: ["/bin/sh", "-c", "yarn dev"]
     depends_on:
-      - nats
       - postgres
       - redis
 

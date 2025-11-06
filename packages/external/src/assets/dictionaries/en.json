@@ -1,0 +1,71 @@
+{
+  "common": {
+    "title": "Melorin",
+    "description": "We Build Your Digital Future",
+    "header": {
+      "start": {
+        "home": "Home",
+        "showcase": "Showcase",
+        "pricing": "Pricing",
+        "blog": "Blog",
+        "contact": "Contact"
+      },
+      "end": {
+        "button": "Contact Sales",
+        "faq": "FAQ"
+      }
+    },
+    "footer": {
+      "menu": {
+        "home": "Home",
+        "contact": "Contact Us",
+        "about": "About Us"
+      },
+      "button": "Contact Sales",
+      "pp": {
+        "title": "Privacy Policy | Terms and Conditions",
+        "description": "All product names, logos and brands are the property of their respective owners. All company, product and service names used on this website are for identification purposes only. The use of these names, logos and brands does not imply any endorsement or endorsement of them."
+      },
+      "bottom": {
+        "start": "© Melorin, all rights reserved.",
+        "end": "Powered by Kasra Alizadeh"
+      }
+    },
+    "locales": {
+      "ar": "Arabic",
+      "en": "English",
+      "fa": "Persian",
+      "ku": "Kurdish"
+    }
+  },
+  "home": {
+    "MetaData": {
+      "title": "melorin"
+    },
+    "title": "MELORIN",
+    "sections": {
+      "nav": {
+        "start": "To place an order or get in touch with our sales team, you can contact us through the Contact Us section.",
+        "end": "Currently, 9 services are active."
+      },
+      "hero": {
+        "title": "Melorin: Your Launchpad to the World of Online Business",
+        "description": "At Melorin, we combine creativity and technology to build websites that not only meet your current needs but also secure the future of your business. From advanced online stores to unique, specialized websites, our team is here to bring every idea to life. Experience unparalleled digital growth with us.",
+        "contact": "Contact Sales",
+        "showcase": "Showcase"
+      }
+    }
+  },
+  "pricing": {
+    "metadata": {},
+    "title": "",
+    "summary": "ما رؤیاهای دیجیتال شما را به واقعیت تبدیل می‌کنیم.",
+    "description": "در این بخش می‌توانید نگاهی به پروژه‌های ما بیندازید و با تخصص، خلاقیت، و کیفیت کار ما بیشتر آشنا شوید. ما با هر پروژه‌ای تلاش می‌کنیم بهترین راه‌حل‌ها را برای نیازهای مشتریان ارائه دهیم."
+  },
+  "showcase": {
+    "metadata": {},
+    "title": "",
+    "summary": "ما رؤیاهای دیجیتال شما را به واقعیت تبدیل می‌کنیم.",
+    "description": "در این بخش می‌توانید نگاهی به پروژه‌های ما بیندازید و با تخصص، خلاقیت، و کیفیت کار ما بیشتر آشنا شوید. ما با هر پروژه‌ای تلاش می‌کنیم بهترین راه‌حل‌ها را برای نیازهای مشتریان ارائه دهیم."
+  }
+}

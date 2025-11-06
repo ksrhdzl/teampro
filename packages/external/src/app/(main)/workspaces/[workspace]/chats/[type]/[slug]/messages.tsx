@@ -1,13 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { Loader } from 'lucide-react';
-import { differenceInMinutes, format, isToday, isYesterday } from 'date-fns';
-import { Message } from './message';
-import { Hero } from './hero';
-import { MessageEdge } from '@/libraries/graphql';
 import { useParams } from 'next/navigation';
+import { differenceInMinutes, format, isToday, isYesterday } from 'date-fns';
+import { Loader } from 'lucide-react';
 import { Badge } from '@/components/badge';
+import { MessageEdge } from '@/libraries/graphql';
+
+import { Hero } from './hero';
+import { Message } from './message';
 
 // import { useCurrentMember } from '@/features/members/api/use-current-member';
 // import { GetMessagesReturnType } from '@/features/messages/api/use-get-messages';

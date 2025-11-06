@@ -1,7 +1,8 @@
 'use client';
 
-import { Modaler } from '@/features/modaler';
 import { useEditMemberModal } from '@/features/member/hooks';
+import { Modaler } from '@/features/modaler';
+
 import { EditMemberFormWrapper } from './edit-member-form-wrapper';
 
 export const EditMemberModal = () => {

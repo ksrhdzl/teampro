@@ -1,9 +1,6 @@
-import { Loader } from 'lucide-react';
-
-import { Card, CardContent } from '@/components/card';
-import { EditIssueForm } from './edit-issue-form';
-
 import { useParams } from 'next/navigation';
+import { Loader } from 'lucide-react';
+import { Card, CardContent } from '@/components/card';
 import {
   MemberIssueSortFields,
   MemberSortFields,
@@ -14,6 +11,8 @@ import {
   useMembersQuery,
   useProjectsQuery,
 } from '@/libraries/graphql';
+
+import { EditIssueForm } from './edit-issue-form';
 
 export const EditIssueFormWrapper = ({
   onCancel,
@@ -71,7 +70,7 @@ export const EditIssueFormWrapper = ({
     return (
       <Card className="h-[714px] w-full border-none shadow-none">
         <CardContent className="flex h-full items-center justify-center">
-          <Loader className="text-muted-foreground size-5 animate-spin" />
+          <Loader className="size-5 animate-spin text-muted-foreground" />
         </CardContent>
       </Card>
     );

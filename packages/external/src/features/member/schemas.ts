@@ -1,5 +1,5 @@
-import { MemberRoleEnum } from '@/libraries/graphql';
 import { z } from 'zod';
+import { MemberRoleEnum } from '@/libraries/graphql';
 
 export const memberSchema = z.object({
   name: z.string().trim().min(3),

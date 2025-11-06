@@ -1,5 +1,5 @@
-import { AuthFlow } from '@/features/auth/types';
 import { Button } from '@/components/button';
+import { AuthFlow } from '@/features/auth/types';
 
 export const ForgotPasswordFailureCard = ({
   setState,
@@ -11,7 +11,7 @@ export const ForgotPasswordFailureCard = ({
       <div className="flex flex-col gap-6">
         <div className="flex flex-col items-center text-center">
           <h1 className="text-2xl font-bold">Password Reset Failed</h1>
-          <p className="text-muted-foreground text-justify text-balance [text-align-last:center]">
+          <p className="text-justify text-balance text-muted-foreground [text-align-last:center]">
             We're sorry, we couldn't reset your password at this time. Try again
             later.
           </p>

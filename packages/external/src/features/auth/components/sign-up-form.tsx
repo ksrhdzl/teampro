@@ -1,8 +1,8 @@
 'use client';
 
-import { Button } from '@/components/button';
-import { Input } from '@/components/input';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { Button } from '@/components/button';
 import {
   Form,
   FormControl,
@@ -11,9 +11,10 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/form';
-import { useForm } from 'react-hook-form';
-import { AuthFlow } from '../types';
+import { Input } from '@/components/input';
+
 import { SignUp, singUpSchema } from '../schemas';
+import { AuthFlow } from '../types';
 
 export const SignUpForm = ({
   setState,
@@ -43,7 +44,7 @@ export const SignUpForm = ({
       >
         <div className="flex flex-col items-center gap-2 text-center">
           <h1 className="text-2xl font-bold">Welcome</h1>
-          <p className="text-muted-foreground text-sm text-balance">
+          <p className="text-sm text-balance text-muted-foreground">
             Sign up to create your account
           </p>
         </div>

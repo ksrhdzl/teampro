@@ -1,5 +1,5 @@
-import { cn } from '@/libraries/utilities';
 import { Avatar, AvatarFallback } from '@/components/avatar';
+import { cn } from '@/libraries/utilities';
 
 export const MemberAvatar = ({
   name,

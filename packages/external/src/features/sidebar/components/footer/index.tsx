@@ -4,9 +4,10 @@ import {
   SidebarMenuItem,
   SidebarSeparator,
 } from '@/components/sidebar';
-import { Profile } from './profile';
-import { Logout } from './logout';
+
 import { useSidebarSettings } from '../../hooks';
+import { Logout } from './logout';
+import { Profile } from './profile';
 
 export const Footer = () => {
   // const { sidebarSettings, setSidebarSettings } = useSidebarSettings();

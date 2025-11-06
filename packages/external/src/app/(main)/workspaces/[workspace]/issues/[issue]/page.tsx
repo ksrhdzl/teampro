@@ -1,15 +1,15 @@
 'use client';
 
+import { useEffect } from 'react';
+import { useParams } from 'next/navigation';
+import { useSetAtom } from 'jotai';
+import { Trash2Icon } from 'lucide-react';
 import { Button } from '@/components/button';
 import { TaskDescription } from '@/features/issue/components/task-description';
 import { TaskOverview } from '@/features/issue/components/task-overview';
 import { ProjectAvatar } from '@/features/project/components/project-avatar';
 import { useIssueQuery } from '@/libraries/graphql';
 import { breadcrumbAtom } from '@/libraries/jotai/atoms';
-import { useSetAtom } from 'jotai';
-import { Trash2Icon } from 'lucide-react';
-import { useParams } from 'next/navigation';
-import { useEffect } from 'react';
 
 export default function Page() {
   const { workspace, issue }: { workspace: string; issue: string } =
@@ -42,9 +42,9 @@ export default function Page() {
 
   return (
     <>
-      <div className="bg-muted/40 flex min-h-screen w-full flex-col">
+      <div className="flex min-h-screen w-full flex-col bg-muted/40">
         <div className="flex flex-col">
-          <header className="bg-background flex h-16 items-center gap-4 border-b px-4 sm:px-6">
+          <header className="flex h-16 items-center gap-4 border-b bg-background px-4 sm:px-6">
             <div className="flex flex-1 flex-row items-center justify-start gap-2">
               <ProjectAvatar
                 name={data?.issue.project?.name!}

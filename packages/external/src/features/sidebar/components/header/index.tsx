@@ -1,5 +1,6 @@
 'use client';
 
+import { useParams, useRouter } from 'next/navigation';
 import { ChevronsUpDown, Loader2, Plus } from 'lucide-react';
 import {
   DropdownMenu,
@@ -16,12 +17,12 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/sidebar';
-import { useParams, useRouter } from 'next/navigation';
 import {
   SortDirection,
   useWorkspacesQuery,
   WorkspaceSortFields,
 } from '@/libraries/graphql';
+
 import { WorkspaceAvatar } from './workspace-avatar';
 
 export const Header = () => {
@@ -49,7 +50,7 @@ export const Header = () => {
           <SidebarMenuItem>
             <SidebarMenuButton
               size={'lg'}
-              className="bg-sidebar-accent items-center justify-center"
+              className="items-center justify-center bg-sidebar-accent"
             >
               <Loader2 className="animate-spin" />
             </SidebarMenuButton>
@@ -103,7 +104,7 @@ export const Header = () => {
             >
               {otherWorkspaces.length > 0 && (
                 <>
-                  <DropdownMenuLabel className="text-muted-foreground text-xs">
+                  <DropdownMenuLabel className="text-xs text-muted-foreground">
                     Workspaces
                   </DropdownMenuLabel>
                   {otherWorkspaces.map((w, index) => (
@@ -129,10 +130,10 @@ export const Header = () => {
                 onClick={() => router.push('/workspaces/create')}
                 className="gap-2 p-2"
               >
-                <div className="bg-background flex size-6 items-center justify-center rounded-sm border">
+                <div className="flex size-6 items-center justify-center rounded-sm border bg-background">
                   <Plus className="size-4" />
                 </div>
-                <div className="text-muted-foreground font-medium">
+                <div className="font-medium text-muted-foreground">
                   Add workspace
                 </div>
               </DropdownMenuItem>

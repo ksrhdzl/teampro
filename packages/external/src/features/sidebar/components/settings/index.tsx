@@ -1,5 +1,15 @@
 'use client';
 
+import { useEffect } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { ChevronLeft, ChevronRightIcon } from 'lucide-react';
+import { routes } from '@/assets/data';
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from '@/components/collapsible';
 import {
   SidebarContent,
   SidebarGroup,
@@ -12,17 +22,8 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from '@/components/sidebar';
-import { ChevronLeft, ChevronRightIcon } from 'lucide-react';
+
 import { useSidebarSettings } from '../../hooks';
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from '@/components/collapsible';
-import { usePathname } from 'next/navigation';
-import { routes } from '@/assets/data';
-import Link from 'next/link';
-import { useEffect } from 'react';
 
 export const Settings = () => {
   const pathname = usePathname();

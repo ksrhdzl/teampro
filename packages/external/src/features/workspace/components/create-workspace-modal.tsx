@@ -2,8 +2,8 @@
 
 import { Modaler } from '@/features/modaler';
 
-import { CreateWorkspaceForm } from './create-workspace-form';
 import { useCreateWorkspaceModal } from '../hooks/use-create-workspace-modal';
+import { CreateWorkspaceForm } from './create-workspace-form';
 
 export const CreateWorkspaceModal = () => {
   const { modal, setModal } = useCreateWorkspaceModal();

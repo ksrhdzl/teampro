@@ -1,5 +1,7 @@
 'use client';
 
+import { useParams } from 'next/navigation';
+import { Loader2Icon, TriangleAlertIcon } from 'lucide-react';
 import {
   MemberConversationSortFields,
   MessageSortFields,
@@ -8,8 +10,7 @@ import {
   useMemberConversationsQuery,
   useMessagesQuery,
 } from '@/libraries/graphql';
-import { Loader2Icon, TriangleAlertIcon } from 'lucide-react';
-import { useParams } from 'next/navigation';
+
 import { Header } from './header';
 import { Input } from './input';
 import { Messages } from './messages';
@@ -63,7 +64,7 @@ export default function Page() {
   if (loadingMemberConversations || loadingConversation || loadingMessages) {
     return (
       <div className="flex h-full flex-1 items-center justify-center">
-        <Loader2Icon className="text-muted-foreground size-5 animate-spin" />
+        <Loader2Icon className="size-5 animate-spin text-muted-foreground" />
       </div>
     );
   }
@@ -71,8 +72,8 @@ export default function Page() {
   if (errorConversation || !dataConversation?.conversation.id) {
     return (
       <div className="flex h-full flex-1 flex-col items-center justify-center gap-y-2">
-        <TriangleAlertIcon className="text-muted-foreground size-5" />
-        <span className="text-muted-foreground text-sm">Channel not found</span>
+        <TriangleAlertIcon className="size-5 text-muted-foreground" />
+        <span className="text-sm text-muted-foreground">Channel not found</span>
       </div>
     );
   }

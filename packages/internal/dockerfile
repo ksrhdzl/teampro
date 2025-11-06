@@ -1,9 +1,8 @@
-# -----------------------
+
 FROM node:22-alpine AS base
 RUN apk update && apk add --no-cache libc6-compat
 RUN corepack enable
 
-# -----------------------
 FROM base AS installer
 WORKDIR /usr/src/app
 COPY package.json ./package.json
@@ -11,7 +10,6 @@ COPY .yarnrc.yml ./.yarnrc.yml
 COPY yarn.lock ./yarn.lock
 RUN yarn install
 
-# -----------------------
 FROM base AS builder
 WORKDIR /usr/src/app
 COPY . .
@@ -20,7 +18,6 @@ COPY --from=installer /usr/src/app/node_modules ./node_modules
 COPY --from=installer /usr/src/app/yarn.lock ./yarn.lock
 RUN yarn run build
 
-# -----------------------
 FROM base AS runner
 WORKDIR /usr/src/app
 

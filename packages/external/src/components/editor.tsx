@@ -1,13 +1,3 @@
-import Image from 'next/image';
-import { Delta, Op } from 'quill/core';
-import Quill, { type QuillOptions } from 'quill';
-import {
-  CaseSensitiveIcon,
-  ImageIcon,
-  SendHorizonalIcon,
-  Smile,
-  XIcon,
-} from 'lucide-react';
 import {
   MutableRefObject,
   useEffect,
@@ -15,9 +5,20 @@ import {
   useRef,
   useState,
 } from 'react';
+import Image from 'next/image';
+import {
+  CaseSensitiveIcon,
+  ImageIcon,
+  SendHorizonalIcon,
+  Smile,
+  XIcon,
+} from 'lucide-react';
+import Quill, { type QuillOptions } from 'quill';
+import { Delta, Op } from 'quill/core';
 import { cn } from '@/libraries/utilities';
-import { Hint } from './hint';
+
 import { Button } from './button';
+import { Hint } from './hint';
 // import { EmojiPopover } from "./emoji-popover";
 
 import 'quill/dist/quill.snow.css';
@@ -269,7 +270,7 @@ const Editor = ({
               className={cn(
                 'ml-auto',
                 isEmpty
-                  ? 'text-muted-foreground bg-white hover:bg-white'
+                  ? 'bg-white text-muted-foreground hover:bg-white'
                   : 'bg-[#007a5a] text-white hover:bg-[#007a5a]/80',
               )}
             >
@@ -281,7 +282,7 @@ const Editor = ({
       {variant === 'create' && (
         <div
           className={cn(
-            'text-muted-foreground hidden justify-end text-[10px] opacity-0 transition',
+            'hidden justify-end text-[10px] text-muted-foreground opacity-0 transition',
             !isEmpty && 'hidden opacity-100',
           )}
         >

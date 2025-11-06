@@ -1,23 +1,22 @@
 'use client';
 
-import { toast } from 'sonner';
 import dynamic from 'next/dynamic';
 import { format, isToday, isYesterday } from 'date-fns';
+import { toast } from 'sonner';
+// import { Toolbar } from './toolbar';
+// import { Thumbnail } from './thumbnail';
+// import { Reactions } from './reactions';
+// import { ThreadBar } from './thread-bar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/avatar';
+// import { usePanel } from '@/hooks/use-panel';
+// import { useConfirm } from '@/hooks/use-confirm';
 
+import { Hint } from '@/components/hint';
 // import { useUpdateMessage } from '@/features/messages/api/use-update-message';
 // import { useRemoveMessage } from '@/features/messages/api/use-remove-message';
 // import { useToggleReaction } from '@/features/reactions/api/use-toggle-reaction';
 
 import { cn } from '@/libraries/utilities';
-// import { usePanel } from '@/hooks/use-panel';
-// import { useConfirm } from '@/hooks/use-confirm';
-
-import { Hint } from '@/components/hint';
-// import { Toolbar } from './toolbar';
-// import { Thumbnail } from './thumbnail';
-// import { Reactions } from './reactions';
-// import { ThreadBar } from './thread-bar';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/avatar';
 
 const Editor = dynamic(() => import('@/components/editor'), { ssr: false });
 const Renderer = dynamic(() => import('@/components/renderer'), { ssr: false });
@@ -151,7 +150,7 @@ export const Message = ({
         >
           <div className="flex items-start gap-2">
             <Hint label={formatFullTime(new Date(createdAt))}>
-              <button className="text-muted-foreground w-[40px] text-center text-xs leading-[22px] opacity-0 group-hover:opacity-100 hover:underline">
+              <button className="w-[40px] text-center text-xs leading-[22px] text-muted-foreground opacity-0 group-hover:opacity-100 hover:underline">
                 {format(new Date(createdAt), 'hh:mm')}
               </button>
             </Hint>
@@ -170,7 +169,7 @@ export const Message = ({
                 <Renderer value={body} />
                 {/* <Thumbnail url={image} /> */}
                 {updatedAt ? (
-                  <span className="text-muted-foreground text-xs">
+                  <span className="text-xs text-muted-foreground">
                     (edited)
                   </span>
                 ) : null}
@@ -243,13 +242,13 @@ export const Message = ({
                   onClick={() => {
                     // onOpenProfile(memberId);
                   }}
-                  className="text-primary font-bold hover:underline"
+                  className="font-bold text-primary hover:underline"
                 >
                   {authorName}
                 </button>
                 <span>&nbsp;&nbsp;</span>
                 <Hint label={formatFullTime(new Date(createdAt))}>
-                  <button className="text-muted-foreground text-xs hover:underline">
+                  <button className="text-xs text-muted-foreground hover:underline">
                     {format(new Date(createdAt), 'h:mm a')}
                   </button>
                 </Hint>
@@ -257,7 +256,7 @@ export const Message = ({
               <Renderer value={body} />
               {/* <Thumbnail url={image} /> */}
               {updatedAt ? (
-                <span className="text-muted-foreground text-xs">(edited)</span>
+                <span className="text-xs text-muted-foreground">(edited)</span>
               ) : null}
               {/* <Reactions data={reactions} onChange={handleReaction} /> */}
               {/* <ThreadBar

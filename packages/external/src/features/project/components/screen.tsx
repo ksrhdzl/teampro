@@ -1,5 +1,4 @@
-import { useSetAtom } from 'jotai';
-import { breadcrumbAtom } from '@/libraries/jotai/atoms';
+import { useEffect } from 'react';
 import {
   notFound,
   redirect,
@@ -7,14 +6,16 @@ import {
   usePathname,
   useRouter,
 } from 'next/navigation';
-import { ProjectAvatar } from './project-avatar';
-import { Button } from '@/components/button';
+import { useSetAtom } from 'jotai';
 import { SettingsIcon } from 'lucide-react';
-import { TaskViewSwitcher } from '@/features/issue/components/task-view-switcher';
-import { useProjectQuery } from '@/libraries/graphql';
-import { useEffect } from 'react';
+import { Button } from '@/components/button';
 import { CreateIssueModal } from '@/features/issue/components/create-issue-modal';
 import { EditIssueModal } from '@/features/issue/components/edit-issue-modal';
+import { TaskViewSwitcher } from '@/features/issue/components/task-view-switcher';
+import { useProjectQuery } from '@/libraries/graphql';
+import { breadcrumbAtom } from '@/libraries/jotai/atoms';
+
+import { ProjectAvatar } from './project-avatar';
 
 export const Screen = () => {
   const pathname = usePathname();
@@ -46,9 +47,9 @@ export const Screen = () => {
     <>
       <CreateIssueModal />
       <EditIssueModal />
-      <div className="bg-muted/40 flex min-h-screen w-full flex-col">
+      <div className="flex min-h-screen w-full flex-col bg-muted/40">
         <div className="flex flex-col">
-          <header className="bg-background flex h-16 items-center gap-4 border-b px-4 sm:px-6">
+          <header className="flex h-16 items-center gap-4 border-b bg-background px-4 sm:px-6">
             <div className="flex flex-1 flex-row items-center justify-start gap-2">
               <ProjectAvatar
                 name={dataProject?.project.name!}
@@ -59,7 +60,7 @@ export const Screen = () => {
                 <h1 className="text-lg font-semibold">
                   {dataProject?.project.name}
                 </h1>
-                <p className="text-secondary-foreground text-xs">
+                <p className="text-xs text-secondary-foreground">
                   with us you will win !
                 </p>
               </div>

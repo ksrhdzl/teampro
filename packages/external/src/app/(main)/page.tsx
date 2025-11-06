@@ -1,6 +1,8 @@
 'use server';
 
 import 'server-only';
+
+import { redirect } from 'next/navigation';
 import { getApolloClient } from '@/libraries/apollo/utilities';
 import {
   SortDirection,
@@ -10,7 +12,6 @@ import {
   WorkspacesQueryVariables,
 } from '@/libraries/graphql';
 import { getBackendURL } from '@/libraries/utilities/envs.utility';
-import { redirect } from 'next/navigation';
 
 export default async function Page() {
   const uri = await getBackendURL();

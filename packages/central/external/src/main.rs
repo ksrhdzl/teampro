@@ -1,5 +1,5 @@
 use anyhow::Result;
-use lib::app::App;
+use external::app::App;
 
 #[tokio::main]
 async fn main() -> Result<()> {

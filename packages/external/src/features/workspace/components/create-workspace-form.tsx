@@ -1,15 +1,12 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { ImageIcon } from 'lucide-react';
-import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
-
-import { cn } from '@/libraries/utilities';
-import { Input } from '@/components/input';
-import { Button } from '@/components/button';
+import { ImageIcon } from 'lucide-react';
+import { useForm } from 'react-hook-form';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/avatar';
+import { Button } from '@/components/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/card';
 import {
   Form,
@@ -20,13 +17,15 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/form';
-
-import { CreateWorkspace, createWorkspaceSchema } from '../schemas';
-import slugify from '@/libraries/utilities/slugify.utility';
+import { Input } from '@/components/input';
 import {
   useCreateWorkspaceMutation,
   usePresignedAssetMutation,
 } from '@/libraries/graphql';
+import { cn } from '@/libraries/utilities';
+import slugify from '@/libraries/utilities/slugify.utility';
+
+import { CreateWorkspace, createWorkspaceSchema } from '../schemas';
 
 export const CreateWorkspaceForm = ({
   onCancel,

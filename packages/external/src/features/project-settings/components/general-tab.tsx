@@ -1,3 +1,9 @@
+import { useEffect } from 'react';
+import { useParams, useRouter } from 'next/navigation';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Loader2 } from 'lucide-react';
+import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 import { Button } from '@/components/button';
 import {
   Card,
@@ -27,12 +33,6 @@ import {
 } from '@/libraries/graphql';
 import { useConfirmDialog } from '@/libraries/hooks/use-confirm';
 import slugify from '@/libraries/utilities/slugify.utility';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Loader2 } from 'lucide-react';
-import { useParams, useRouter } from 'next/navigation';
-import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import { toast } from 'sonner';
 
 export const GeneralTab = () => {
   const router = useRouter();
@@ -127,10 +127,10 @@ export const GeneralTab = () => {
     <>
       <ConfirmDialog />
       <div className="space-y-4">
-        <header className="bg-background z-0 flex h-16 items-center gap-4 border-b px-4 sm:px-6">
+        <header className="z-0 flex h-16 items-center gap-4 border-b bg-background px-4 sm:px-6">
           <div className="flex flex-1 flex-col items-start justify-center">
             <h1 className="text-lg font-semibold">General Settings</h1>
-            <p className="text-secondary-foreground text-xs">
+            <p className="text-xs text-secondary-foreground">
               Manage your project
             </p>
           </div>

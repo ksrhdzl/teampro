@@ -1,7 +1,7 @@
+import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { useSetAtom } from 'jotai';
 import { breadcrumbAtom } from '@/libraries/jotai/atoms';
-import { usePathname } from 'next/navigation';
-import { useEffect } from 'react';
 
 export const Screen = () => {
   const pathname = usePathname();
@@ -12,12 +12,12 @@ export const Screen = () => {
 
   return (
     <>
-      <div className="bg-muted/40 flex min-h-screen w-full flex-col">
+      <div className="flex min-h-screen w-full flex-col bg-muted/40">
         <div className="flex flex-col">
-          <header className="bg-background flex h-16 items-center gap-4 border-b px-4 sm:px-6">
+          <header className="flex h-16 items-center gap-4 border-b bg-background px-4 sm:px-6">
             <div className="flex flex-1 flex-col items-start justify-center">
               <h1 className="text-lg font-semibold">Home</h1>
-              <p className="text-secondary-foreground text-xs">
+              <p className="text-xs text-secondary-foreground">
                 with us you will win !
               </p>
             </div>

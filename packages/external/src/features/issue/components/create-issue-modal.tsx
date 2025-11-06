@@ -1,8 +1,9 @@
 'use client';
 
 import { Modaler } from '@/features/modaler';
-import { CreateIssueForm } from './create-issue-form';
+
 import { useCreateIssueModal } from '../hooks/use-create-issue-modal';
+import { CreateIssueForm } from './create-issue-form';
 
 export const CreateIssueModal = () => {
   const { modal, setModal } = useCreateIssueModal();

@@ -1,5 +1,13 @@
 'use client';
 
+import { useParams, useRouter } from 'next/navigation';
+import {
+  ChevronDown,
+  ChevronRight,
+  HashIcon,
+  PlusCircleIcon,
+  PlusIcon,
+} from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/avatar';
 import {
   Collapsible,
@@ -24,14 +32,6 @@ import {
   SortDirection,
   useMemberConversationsQuery,
 } from '@/libraries/graphql';
-import {
-  ChevronDown,
-  ChevronRight,
-  HashIcon,
-  PlusCircleIcon,
-  PlusIcon,
-} from 'lucide-react';
-import { useParams, useRouter } from 'next/navigation';
 
 export const Sidebaro = () => {
   const router = useRouter();

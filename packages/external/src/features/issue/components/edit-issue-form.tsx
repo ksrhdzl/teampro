@@ -1,10 +1,12 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
+import { useEffect, useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { cn } from '@/libraries/utilities';
-import { Input } from '@/components/input';
+import { format } from 'date-fns';
+import { CalendarIcon } from 'lucide-react';
+import { useForm } from 'react-hook-form';
 import { Button } from '@/components/button';
+import { Calendar } from '@/components/calendar';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/card';
 import {
   Form,
@@ -14,6 +16,8 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/form';
+import { Input } from '@/components/input';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/popover';
 import {
   Select,
   SelectContent,
@@ -21,6 +25,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/select';
+import { Textarea } from '@/components/textarea';
+import { MemberAvatar } from '@/features/member/components/member-avatar';
+import { ProjectAvatar } from '@/features/project/components/project-avatar';
 import {
   IssueQuery,
   IssuesDocument,
@@ -33,16 +40,10 @@ import {
   useUpdateIssueMutation,
   useUpdateMemberIssueMutation,
 } from '@/libraries/graphql';
-import { UpdateIssue, updateIssueSchema } from '../schemas';
-import { ProjectAvatar } from '@/features/project/components/project-avatar';
-import { useEffect, useState } from 'react';
-import { MemberAvatar } from '@/features/member/components/member-avatar';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/popover';
-import { Calendar } from '@/components/calendar';
-import { CalendarIcon } from 'lucide-react';
-import { format } from 'date-fns';
-import { Textarea } from '@/components/textarea';
+import { cn } from '@/libraries/utilities';
 import slugify from '@/libraries/utilities/slugify.utility';
+
+import { UpdateIssue, updateIssueSchema } from '../schemas';
 
 export const EditIssueForm = ({
   onCancel,

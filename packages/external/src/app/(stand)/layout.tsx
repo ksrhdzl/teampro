@@ -1,8 +1,8 @@
-import { Button } from '@/components/button';
-import { verifySession } from '@/libraries/utilities';
-import { GalleryVerticalEnd } from 'lucide-react';
 import Link from 'next/link';
 import { redirect, RedirectType } from 'next/navigation';
+import { GalleryVerticalEnd } from 'lucide-react';
+import { Button } from '@/components/button';
+import { verifySession } from '@/libraries/utilities';
 
 export default async function Layout({
   children,
@@ -13,11 +13,11 @@ export default async function Layout({
   if (!session) redirect('/auth', RedirectType.replace);
 
   return (
-    <main className="bg-muted/40 min-h-screen w-full">
+    <main className="min-h-screen w-full bg-muted/40">
       <div className="mx-auto flex w-full max-w-xl flex-col items-center justify-start gap-4">
         <div className="flex h-24 w-full items-center justify-between gap-2">
           <Link href={'#'} className="flex items-center gap-2 font-medium">
-            <div className="bg-primary text-primary-foreground flex h-6 w-6 items-center justify-center rounded-md">
+            <div className="flex h-6 w-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
               <GalleryVerticalEnd className="size-4" />
             </div>
             TEAMPRO

@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import React from 'react';
+import React, { useState } from 'react';
+import type { VariantProps } from 'class-variance-authority';
 import { Button, buttonVariants } from '@/components/button';
 import {
   Card,
@@ -9,7 +9,6 @@ import {
   CardTitle,
 } from '@/components/card';
 import { Modaler } from '@/features/modaler';
-import type { VariantProps } from 'class-variance-authority';
 
 type ButtonVariant = VariantProps<typeof buttonVariants>['variant'];
 

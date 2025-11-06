@@ -1,24 +1,24 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-
+import { useSetAtom } from 'jotai';
+import { Cog, Users } from 'lucide-react';
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
   SidebarHeader,
-  SidebarMenu,
-  SidebarMenuItem,
-  SidebarMenuButton,
-  SidebarProvider,
   SidebarInset,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarProvider,
 } from '@/components/sidebar';
-import { Users, Cog } from 'lucide-react';
+import { breadcrumbAtom } from '@/libraries/jotai/atoms';
+
 import { GeneralTab } from './general-tab';
 import { MembersTab } from './members-tab';
-import { useSetAtom } from 'jotai';
-import { breadcrumbAtom } from '@/libraries/jotai/atoms';
 
 export const Screen = () => {
   const [tab, setTab] = useState('general');
@@ -29,7 +29,7 @@ export const Screen = () => {
   }, [setBreadcrumb]);
 
   return (
-    <div className="bg-muted/40 flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-muted/40">
       <SidebarProvider>
         <div className="flex flex-1">
           <Sidebar
@@ -37,7 +37,7 @@ export const Screen = () => {
             variant="sidebar"
             collapsible="none"
           >
-            <SidebarHeader className="bg-background flex h-16 items-start gap-4 border-b px-4">
+            <SidebarHeader className="flex h-16 items-start gap-4 border-b bg-background px-4">
               <div className="flex flex-1 flex-col items-start justify-center">
                 <h1 className="text-lg font-semibold">Project Settings</h1>
               </div>

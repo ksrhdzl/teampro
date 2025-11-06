@@ -1,20 +1,20 @@
 'use client';
 
-import { Layers3Icon } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
 import Image from 'next/image';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { Layers3Icon } from 'lucide-react';
 import { cn } from '@/libraries/utilities';
 import { getStorageURL } from '@/libraries/utilities/envs.utility';
 
 const avatarVariants = cva(
-  'flex aspect-square items-center overflow-hidden justify-center ',
+  'flex aspect-square items-center justify-center overflow-hidden',
   {
     variants: {
       variant: {
         large:
-          'bg-sidebar-primary text-sidebar-primary-foreground size-8 rounded-sm',
-        sm: 'size-6 text-sidebar-primary rounded-sm',
+          'size-8 rounded-sm bg-sidebar-primary text-sidebar-primary-foreground',
+        sm: 'size-6 rounded-sm text-sidebar-primary',
       },
     },
     defaultVariants: {

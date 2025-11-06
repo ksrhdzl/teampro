@@ -1,8 +1,9 @@
 'use client';
 
 import * as React from 'react';
-import { useParams, usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { useParams, usePathname } from 'next/navigation';
+import { useAtom } from 'jotai';
 import {
   BellIcon,
   ChevronRightIcon,
@@ -14,26 +15,26 @@ import {
   SettingsIcon,
   UsersIcon,
 } from 'lucide-react';
-import {
-  SidebarContent,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarGroup,
-  SidebarGroupLabel,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
-} from '@/components/sidebar';
+import { routes } from '@/assets/data';
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from '@/components/collapsible';
-import { routes } from '@/assets/data';
-import { NavProjects } from './nav-projects';
-import { useAtom } from 'jotai';
+import {
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+} from '@/components/sidebar';
 import { notificationAtom } from '@/libraries/jotai/atoms';
+
+import { NavProjects } from './nav-projects';
 
 export const Main = () => {
   const pathname = usePathname();

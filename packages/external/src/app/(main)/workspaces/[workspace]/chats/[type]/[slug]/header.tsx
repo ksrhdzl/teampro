@@ -1,6 +1,6 @@
+import { ChevronDown, SettingsIcon } from 'lucide-react';
 import { Avatar, AvatarFallback } from '@/components/avatar';
 import { Button } from '@/components/button';
-import { ChevronDown, SettingsIcon } from 'lucide-react';
 
 export const Header = ({ name }: { name: string }) => {
   const avatarFallback = name?.charAt(0).toUpperCase();

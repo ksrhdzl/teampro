@@ -14,16 +14,18 @@ import {
   ChevronsLeft,
   ChevronsRight,
 } from 'lucide-react';
+import { toast } from 'sonner';
+import { Badge } from '@/components/badge';
 import { Button } from '@/components/button';
+import { Checkbox } from '@/components/checkbox';
 import {
-  Table as TableComponent,
   TableBody,
   TableCell,
+  Table as TableComponent,
   TableHead,
   TableHeader,
   TableRow,
 } from '@/components/table';
-import { Checkbox } from '@/components/checkbox';
 import {
   Member,
   MemberProject,
@@ -36,10 +38,8 @@ import {
   useMemberProjectsQuery,
   useMembersQuery,
 } from '@/libraries/graphql';
-import { Badge } from '@/components/badge';
 // import { useEditMemberModal } from '../hooks/use-edit-member-modal';
 import { useConfirmDialog } from '@/libraries/hooks/use-confirm';
-import { toast } from 'sonner';
 
 const columns: ColumnDef<MemberProject>[] = [
   {
@@ -222,7 +222,7 @@ export function Members() {
 
   return (
     <div className="space-y-4">
-      <div className="bg-background rounded-lg border">
+      <div className="rounded-lg border bg-background">
         <TableComponent>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -273,7 +273,7 @@ export function Members() {
         </TableComponent>
       </div>
       <div className="flex items-center justify-between px-2">
-        <div className="text-muted-foreground flex-1 text-sm">
+        <div className="flex-1 text-sm text-muted-foreground">
           {table.getFilteredSelectedRowModel().rows.length} of{' '}
           {table.getRowCount()}
         </div>

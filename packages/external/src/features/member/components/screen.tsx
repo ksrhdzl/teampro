@@ -1,17 +1,17 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+import { useSetAtom } from 'jotai';
 import { UserPlusIcon } from 'lucide-react';
-
 import { Button } from '@/components/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/tabs';
 import { breadcrumbAtom } from '@/libraries/jotai/atoms';
-import { useSetAtom } from 'jotai';
-import { Members } from './members';
-import { useEffect, useState } from 'react';
-import { CreateMemberModal } from './create-member-modal';
+
 import { useCreateMemberModal } from '../hooks/use-create-member-modal';
-import { EditMemberModal } from './edit-member-modal';
 import { Activities } from './activities';
+import { CreateMemberModal } from './create-member-modal';
+import { EditMemberModal } from './edit-member-modal';
+import { Members } from './members';
 
 export const MembersScreen = () => {
   const [state, setState] = useState('members');
@@ -31,9 +31,9 @@ export const MembersScreen = () => {
     <>
       <CreateMemberModal />
       <EditMemberModal />
-      <div className="bg-muted/40 flex min-h-screen w-full flex-col">
+      <div className="flex min-h-screen w-full flex-col bg-muted/40">
         <Tabs value={state} onValueChange={setState}>
-          <header className="bg-background sticky top-16 flex h-16 items-center gap-4 border-b px-4 sm:px-6">
+          <header className="sticky top-16 flex h-16 items-center gap-4 border-b bg-background px-4 sm:px-6">
             <div className="flex flex-1 items-center gap-2">
               <TabsList>
                 <TabsTrigger value="members">Members</TabsTrigger>

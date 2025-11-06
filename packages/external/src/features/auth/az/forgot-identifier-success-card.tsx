@@ -1,5 +1,5 @@
-import { AuthFlow } from '@/features/auth/types';
 import { Button } from '@/components/button';
+import { AuthFlow } from '@/features/auth/types';
 
 export const ForgotIdentifierSuccessCard = ({
   setState,
@@ -11,7 +11,7 @@ export const ForgotIdentifierSuccessCard = ({
       <div className="flex flex-col gap-6">
         <div className="flex flex-col items-center text-center">
           <h1 className="text-2xl font-bold">Forgot password</h1>
-          <p className="text-muted-foreground text-justify text-balance [text-align-last:center]">
+          <p className="text-justify text-balance text-muted-foreground [text-align-last:center]">
             Enter your email below, and we will send you instructions on how to
             reset your password.
           </p>

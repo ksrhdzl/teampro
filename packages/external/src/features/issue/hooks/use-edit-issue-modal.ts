@@ -1,4 +1,4 @@
-import { useQueryState, parseAsString } from 'nuqs';
+import { parseAsString, useQueryState } from 'nuqs';
 
 export const useEditIssueModal = () => {
   const [modal, setModal] = useQueryState(

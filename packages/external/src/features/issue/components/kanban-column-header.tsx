@@ -6,9 +6,7 @@ import {
   CircleIcon,
   PlusIcon,
 } from 'lucide-react';
-
 import { Button } from '@/components/button';
-
 // import { useCreateTaskModal } from '../hooks/use-create-task-modal';
 import { IssueStatusEnum } from '@/libraries/graphql';
 

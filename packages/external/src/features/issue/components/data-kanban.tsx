@@ -1,15 +1,14 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import {
   DragDropContext,
-  Droppable,
   Draggable,
+  Droppable,
   type DropResult,
 } from '@hello-pangea/dnd';
+import { Issue, IssueStatusEnum, MemberIssue } from '@/libraries/graphql';
 
 import { KanbanCard } from './kanban-card';
 import { KanbanColumnHeader } from './kanban-column-header';
-
-import { Issue, IssueStatusEnum, MemberIssue } from '@/libraries/graphql';
 
 const boards: IssueStatusEnum[] = [
   IssueStatusEnum.Backlog,
@@ -171,7 +170,7 @@ export const DataKanban = ({ data, onChange }: DataKanbanProps) => {
           return (
             <div
               key={board}
-              className="bg-muted mx-2 min-w-[200px] flex-1 rounded-md p-1.5"
+              className="mx-2 min-w-[200px] flex-1 rounded-md bg-muted p-1.5"
             >
               <KanbanColumnHeader
                 board={board}

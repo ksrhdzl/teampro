@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { PencilIcon, XIcon } from 'lucide-react';
-
 import { Button } from '@/components/button';
 import { Textarea } from '@/components/textarea';
 import { Issue } from '@/libraries/graphql';

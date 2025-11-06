@@ -1,5 +1,5 @@
-import { IssueStatusEnum } from '@/libraries/graphql';
 import { z } from 'zod';
+import { IssueStatusEnum } from '@/libraries/graphql';
 
 export const createIssueSchema = z.object({
   name: z.string().trim().min(3),

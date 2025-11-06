@@ -1,9 +1,8 @@
 import React from 'react';
 import { useParams, useRouter } from 'next/navigation';
-
-import { cn } from '@/libraries/utilities';
 import { MemberAvatar } from '@/features/member/components/member-avatar';
 import { ProjectAvatar } from '@/features/project/components/project-avatar';
+import { cn } from '@/libraries/utilities';
 
 interface EventCardProps {
   title: string;
@@ -42,7 +41,7 @@ export const EventCard = ({
       <div
         onClick={onClick}
         className={cn(
-          'text-primary flex cursor-pointer flex-col gap-y-1.5 rounded-md border border-l-4 bg-white p-1.5 text-xs transition hover:opacity-75',
+          'flex cursor-pointer flex-col gap-y-1.5 rounded-md border border-l-4 bg-white p-1.5 text-xs text-primary transition hover:opacity-75',
           // statusColorMap[status],
         )}
       >

@@ -1,20 +1,22 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import {
   Bell,
-  Clock,
   BellDotIcon,
+  Check,
+  Clock,
   Search,
   Star,
   UserPlus,
   X,
-  Check,
 } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/avatar';
+import { Badge } from '@/components/badge';
 import { Button } from '@/components/button';
 import { Input } from '@/components/input';
-import { Badge } from '@/components/badge';
-
+import { Label } from '@/components/label';
 import {
   Select,
   SelectContent,
@@ -22,16 +24,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/select';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/tabs';
-import { cn } from '@/libraries/utilities';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/tooltip';
 import { Separator } from '@/components/separator';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/avatar';
 import {
   SidebarContent,
   SidebarGroup,
@@ -42,8 +35,14 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/sidebar';
-import Link from 'next/link';
-import { Label } from '@/components/label';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/tabs';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/tooltip';
+import { cn } from '@/libraries/utilities';
 
 type NotificationType = 'task' | 'project' | 'client' | 'team' | 'system';
 type PriorityLevel = 'low' | 'medium' | 'high' | 'urgent';
@@ -424,12 +423,12 @@ export default function CrmErpNotificationPage() {
 
   return (
     <>
-      <SidebarHeader className="bg-background flex flex-col space-y-3">
+      <SidebarHeader className="flex flex-col space-y-3 bg-background">
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <Link href="#">
-                <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
                   <BellDotIcon className="size-4" />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
@@ -458,7 +457,7 @@ export default function CrmErpNotificationPage() {
 
         <div className="flex flex-col gap-2">
           <div className="relative w-full">
-            <Search className="text-muted-foreground absolute top-2 left-2 h-3 w-3" />
+            <Search className="absolute top-2 left-2 h-3 w-3 text-muted-foreground" />
             <Input
               placeholder="Search..."
               className="h-7 pl-7 text-xs"
@@ -523,10 +522,10 @@ export default function CrmErpNotificationPage() {
           </div>
         </div>
       </SidebarHeader>
-      <SidebarContent className="bg-background relative p-2">
+      <SidebarContent className="relative bg-background p-2">
         <Tabs
           defaultValue="all"
-          className="bg-background z-10 my-0 w-full"
+          className="z-10 my-0 w-full bg-background"
           onValueChange={setActiveTab}
         >
           <TabsList className="sticky top-0 z-10 mb-2 grid h-8 w-full grid-cols-2">
@@ -536,7 +535,7 @@ export default function CrmErpNotificationPage() {
             <TabsTrigger value="unread" className="text-xs">
               Unread
               {unreadCount > 0 && (
-                <span className="bg-primary text-primary-foreground ml-1 rounded-full px-1.5 py-0.5 text-[10px]">
+                <span className="ml-1 rounded-full bg-primary px-1.5 py-0.5 text-[10px] text-primary-foreground">
                   {unreadCount}
                 </span>
               )}
@@ -547,7 +546,7 @@ export default function CrmErpNotificationPage() {
               Object.entries(groupedNotifications).map(([date, items]) => (
                 <div key={date} className="mb-3 last:mb-0">
                   <div className="mb-1 flex items-center">
-                    <h3 className="text-muted-foreground text-xs font-medium">
+                    <h3 className="text-xs font-medium text-muted-foreground">
                       {date}
                     </h3>
                     <Separator className="ml-2 flex-1" />
@@ -557,10 +556,10 @@ export default function CrmErpNotificationPage() {
                       <div
                         key={notification.id}
                         className={cn(
-                          'hover:bg-accent flex flex-col gap-2 rounded-lg border p-2 transition-colors',
+                          'flex flex-col gap-2 rounded-lg border p-2 transition-colors hover:bg-accent',
                           !notification.read && 'bg-muted/50',
                           selectedNotifications.includes(notification.id) &&
-                            'ring-primary ring-2',
+                            'ring-2 ring-primary',
                         )}
                       >
                         <div className="flex items-start gap-2">
@@ -619,11 +618,11 @@ export default function CrmErpNotificationPage() {
                                 {getPriorityBadge(notification.priority)}
                               </div>
                             </div>
-                            <p className="text-muted-foreground my-1 line-clamp-2 text-[11px]">
+                            <p className="my-1 line-clamp-2 text-[11px] text-muted-foreground">
                               {notification.message}
                             </p>
                             <div className="flex flex-col gap-1">
-                              <div className="text-muted-foreground flex items-center gap-1 text-[10px]">
+                              <div className="flex items-center gap-1 text-[10px] text-muted-foreground">
                                 <Clock className="h-2.5 w-2.5" />
                                 <span>{notification.time}</span>
                                 {notification.source && (
@@ -713,9 +712,9 @@ export default function CrmErpNotificationPage() {
               ))
             ) : (
               <div className="flex flex-col items-center justify-center py-6 text-center">
-                <Bell className="text-muted-foreground mb-2 h-8 w-8" />
+                <Bell className="mb-2 h-8 w-8 text-muted-foreground" />
                 <h3 className="mb-1 text-sm font-medium">No notifications</h3>
-                <p className="text-muted-foreground text-xs">
+                <p className="text-xs text-muted-foreground">
                   {searchQuery ||
                   selectedType !== 'all' ||
                   selectedPriority !== 'all' ||
@@ -749,7 +748,7 @@ export default function CrmErpNotificationPage() {
               Object.entries(groupedNotifications).map(([date, items]) => (
                 <div key={date} className="mb-3 last:mb-0">
                   <div className="mb-1 flex items-center">
-                    <h3 className="text-muted-foreground text-xs font-medium">
+                    <h3 className="text-xs font-medium text-muted-foreground">
                       {date}
                     </h3>
                     <Separator className="ml-2 flex-1" />
@@ -761,9 +760,9 @@ export default function CrmErpNotificationPage() {
                         <div
                           key={notification.id}
                           className={cn(
-                            'hover:bg-accent bg-muted/50 flex flex-col gap-2 rounded-lg border p-2 transition-colors',
+                            'flex flex-col gap-2 rounded-lg border bg-muted/50 p-2 transition-colors hover:bg-accent',
                             selectedNotifications.includes(notification.id) &&
-                              'ring-primary ring-2',
+                              'ring-2 ring-primary',
                           )}
                         >
                           <div className="flex items-start gap-2">
@@ -820,11 +819,11 @@ export default function CrmErpNotificationPage() {
                                   {getPriorityBadge(notification.priority)}
                                 </div>
                               </div>
-                              <p className="text-muted-foreground my-1 line-clamp-2 text-[11px]">
+                              <p className="my-1 line-clamp-2 text-[11px] text-muted-foreground">
                                 {notification.message}
                               </p>
                               <div className="flex flex-col gap-1">
-                                <div className="text-muted-foreground flex items-center gap-1 text-[10px]">
+                                <div className="flex items-center gap-1 text-[10px] text-muted-foreground">
                                   <Clock className="h-2.5 w-2.5" />
                                   <span>{notification.time}</span>
                                   {notification.source && (
@@ -916,11 +915,11 @@ export default function CrmErpNotificationPage() {
               ))
             ) : (
               <div className="flex flex-col items-center justify-center py-6 text-center">
-                <Bell className="text-muted-foreground mb-2 h-8 w-8" />
+                <Bell className="mb-2 h-8 w-8 text-muted-foreground" />
                 <h3 className="mb-1 text-sm font-medium">
                   No unread notifications
                 </h3>
-                <p className="text-muted-foreground text-xs">
+                <p className="text-xs text-muted-foreground">
                   You're all caught up!
                 </p>
               </div>

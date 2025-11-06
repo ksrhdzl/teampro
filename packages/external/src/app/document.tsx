@@ -1,10 +1,12 @@
 import '@/assets/styles/globals.css';
-import type { Viewport, Metadata } from 'next';
+
+import type { Metadata, Viewport } from 'next';
+import { getDirection } from '@/libraries/i18n/direction';
 import { cn, inter } from '@/libraries/utilities';
 
 export const metadata: Metadata = {
   title: 'TeamPro',
-  description: 'Manage your teams with power',
+  description: 'Manage your business and teams with power',
 };
 
 export const viewport: Viewport = {
@@ -21,16 +23,26 @@ export const viewport: Viewport = {
 
 export default function Document({
   children,
+  language,
   ...props
 }: {
   children: React.ReactNode;
+  language: string;
 }) {
+  const direction = getDirection(language);
+
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning={true} {...props}>
+    <html
+      lang={language}
+      dir={direction}
+      suppressHydrationWarning={true}
+      {...props}
+    >
       <body
         className={cn(
-          inter.variable,
-          'font-inter bg-background relative min-h-svh w-full antialiased transition-all duration-300',
+          'relative min-h-svh w-full bg-background font-inter antialiased transition-all duration-300',
+          direction == 'ltr' && [inter.variable, 'font-inter'],
+          // direction == 'rtl' && [dana.variable, 'font-dana'],
         )}
       >
         {children}

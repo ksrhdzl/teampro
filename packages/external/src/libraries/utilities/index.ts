@@ -1,3 +1,3 @@
 export * from './cn.utility';
-export * from './fonts.utility';
+export * from './font.utility';
 export * from './session.utility';

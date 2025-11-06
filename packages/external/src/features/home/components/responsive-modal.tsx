@@ -1,7 +1,5 @@
 import { useMedia } from 'react-use';
-
 import { Dialog, DialogContent } from '@/components/dialog';
-
 import { Drawer, DrawerContent } from '@/components/drawer';
 
 interface ResponsiveModalProps {

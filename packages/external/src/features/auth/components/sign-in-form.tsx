@@ -1,8 +1,10 @@
 'use client';
 
-import { Button } from '@/components/button';
-import { Input } from '@/components/input';
+import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+import { Button } from '@/components/button';
 import {
   Form,
   FormControl,
@@ -11,13 +13,12 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/form';
-import { useForm } from 'react-hook-form';
-import { AuthFlow } from '../types';
-import { SignIn, singInSchema } from '../schemas';
-import { useRouter } from 'next/navigation';
-import { toast } from 'sonner';
-import { createSession } from '@/libraries/utilities';
+import { Input } from '@/components/input';
 import { useLoginMutation } from '@/libraries/graphql';
+import { createSession } from '@/libraries/utilities';
+
+import { SignIn, singInSchema } from '../schemas';
+import { AuthFlow } from '../types';
 
 export const SignInForm = ({
   setState,
@@ -71,7 +72,7 @@ export const SignInForm = ({
       >
         <div className="flex flex-col items-center gap-2 text-center">
           <h1 className="text-2xl font-bold">Welcome</h1>
-          <p className="text-muted-foreground text-sm text-balance">
+          <p className="text-sm text-balance text-muted-foreground">
             Sign in to access your account
           </p>
         </div>

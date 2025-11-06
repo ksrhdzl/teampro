@@ -1,15 +1,16 @@
-import { Button } from '@/components/button';
-import { Members } from './members';
 import { UserPlusIcon } from 'lucide-react';
+import { Button } from '@/components/button';
+
+import { Members } from './members';
 
 export const MembersTab = () => {
   return (
     <>
       <div className="space-y-4">
-        <header className="bg-background z-0 flex h-16 items-center gap-4 border-b px-4 sm:px-6">
+        <header className="z-0 flex h-16 items-center gap-4 border-b bg-background px-4 sm:px-6">
           <div className="flex flex-1 flex-col items-start justify-center">
             <h1 className="text-lg font-semibold">Members</h1>
-            <p className="text-secondary-foreground text-xs">
+            <p className="text-xs text-secondary-foreground">
               Manage your members of access project
             </p>
           </div>

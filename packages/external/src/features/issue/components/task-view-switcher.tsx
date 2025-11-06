@@ -1,7 +1,8 @@
 'use client';
 
 import { useCallback } from 'react';
-import { parseAsStringEnum, parseAsStringLiteral, useQueryState } from 'nuqs';
+// import { useBulkUpdateTasks } from "../api/use-bulk-update-tasks";
+import { useParams } from 'next/navigation';
 import {
   CalendarRangeIcon,
   Columns3Icon,
@@ -9,22 +10,9 @@ import {
   PlusIcon,
   Rows3Icon,
 } from 'lucide-react';
+import { parseAsStringEnum, parseAsStringLiteral, useQueryState } from 'nuqs';
 import { Button } from '@/components/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/tabs';
-
-// import { DataFilters } from './data-filters';
-import { columns } from './columns';
-import { DataTable } from './data-table';
-import { DataKanban } from './data-kanban';
-import { DataCalendar } from './data-calendar';
-
-// import { TaskStatus } from "../types";
-// import { useGetTasks } from "../api/use-get-tasks";
-// import { useTaskFilters } from "../hooks/use-task-filters";
-import { useCreateIssueModal } from '../hooks/use-create-issue-modal';
-// import { useBulkUpdateTasks } from "../api/use-bulk-update-tasks";
-import { useParams } from 'next/navigation';
-import { useIssueFilters } from '../hooks/use-issue-filters';
 import {
   IssueSortFields,
   MemberIssueSortFields,
@@ -32,6 +20,17 @@ import {
   useIssuesQuery,
   useMemberIssuesQuery,
 } from '@/libraries/graphql';
+
+// import { TaskStatus } from "../types";
+// import { useGetTasks } from "../api/use-get-tasks";
+// import { useTaskFilters } from "../hooks/use-task-filters";
+import { useCreateIssueModal } from '../hooks/use-create-issue-modal';
+import { useIssueFilters } from '../hooks/use-issue-filters';
+// import { DataFilters } from './data-filters';
+import { columns } from './columns';
+import { DataCalendar } from './data-calendar';
+import { DataKanban } from './data-kanban';
+import { DataTable } from './data-table';
 
 // const VIEW = ["table", "kanban", "calendar"] as const;
 
@@ -121,7 +120,7 @@ export const TaskViewSwitcher = ({
         {/* <DataFilters hideProjectFilter={hideProjectFilter} /> */}
         {loadingMemberIssues ? (
           <div className="flex h-[200px] w-full flex-col items-center justify-center rounded-lg border">
-            <Loader2Icon className="text-muted-foreground size-5 animate-spin" />
+            <Loader2Icon className="size-5 animate-spin text-muted-foreground" />
           </div>
         ) : (
           <>

@@ -1,5 +1,6 @@
 'use server';
 
+import { notFound } from 'next/navigation';
 import { getApolloClient } from '@/libraries/apollo/utilities';
 import {
   WorkspaceDocument,
@@ -7,7 +8,7 @@ import {
   WorkspaceQueryVariables,
 } from '@/libraries/graphql';
 import { getBackendURL } from '@/libraries/utilities/envs.utility';
-import { notFound } from 'next/navigation';
+
 import 'server-only';
 
 export default async function Layout({

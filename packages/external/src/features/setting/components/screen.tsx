@@ -1,6 +1,16 @@
 'use client';
 
 import { useState } from 'react';
+import {
+  Cog,
+  Database,
+  GitBranch,
+  Globe,
+  Key,
+  Shield,
+  Users,
+  Webhook,
+} from 'lucide-react';
 import { Button } from '@/components/button';
 import {
   Card,
@@ -12,7 +22,6 @@ import {
 } from '@/components/card';
 import { Input } from '@/components/input';
 import { Label } from '@/components/label';
-import { Switch } from '@/components/switch';
 import {
   Select,
   SelectContent,
@@ -26,28 +35,19 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarHeader,
-  SidebarMenu,
-  SidebarMenuItem,
-  SidebarMenuButton,
-  SidebarProvider,
   SidebarInset,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarProvider,
 } from '@/components/sidebar';
-import {
-  Globe,
-  GitBranch,
-  Key,
-  Shield,
-  Users,
-  Webhook,
-  Database,
-  Cog,
-} from 'lucide-react';
+import { Switch } from '@/components/switch';
 
 export const Screen = () => {
   const [activeTab, setActiveTab] = useState('general');
 
   return (
-    <div className="bg-muted/40 flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-muted/40">
       <SidebarProvider>
         <div className="flex flex-1">
           <Sidebar
@@ -55,7 +55,7 @@ export const Screen = () => {
             variant="sidebar"
             collapsible="none"
           >
-            <SidebarHeader className="bg-background flex h-16 items-start gap-4 border-b px-4">
+            <SidebarHeader className="flex h-16 items-start gap-4 border-b bg-background px-4">
               <div className="flex flex-1 flex-col items-start justify-center">
                 <h1 className="text-lg font-semibold">Workspace Settings</h1>
               </div>
@@ -146,12 +146,12 @@ export const Screen = () => {
             <div className="">
               {activeTab === 'general' && (
                 <div className="space-y-4">
-                  <header className="bg-background flex h-16 items-center gap-4 border-b px-4 sm:px-6">
+                  <header className="flex h-16 items-center gap-4 border-b bg-background px-4 sm:px-6">
                     <div className="flex flex-1 flex-col items-start justify-center">
                       <h1 className="text-lg font-semibold">
                         General Settings
                       </h1>
-                      <p className="text-secondary-foreground text-xs">
+                      <p className="text-xs text-secondary-foreground">
                         Manage your issues here
                       </p>
                     </div>
@@ -224,7 +224,7 @@ export const Screen = () => {
                               <Label htmlFor="prioritize-builds">
                                 Prioritize Production Builds
                               </Label>
-                              <p className="text-muted-foreground text-sm">
+                              <p className="text-sm text-muted-foreground">
                                 Give production builds priority over preview
                                 builds.
                               </p>
@@ -236,7 +236,7 @@ export const Screen = () => {
                               <Label htmlFor="concurrent-builds">
                                 On-demand Concurrent Builds
                               </Label>
-                              <p className="text-muted-foreground text-sm">
+                              <p className="text-sm text-muted-foreground">
                                 Allow multiple builds to run at the same time.
                               </p>
                             </div>
@@ -270,7 +270,7 @@ export const Screen = () => {
                               <p className="font-medium">
                                 acme-dashboard.vercel.app
                               </p>
-                              <p className="text-muted-foreground text-sm">
+                              <p className="text-sm text-muted-foreground">
                                 Default domain
                               </p>
                             </div>
@@ -312,7 +312,7 @@ export const Screen = () => {
                           <div className="flex items-center justify-between">
                             <div>
                               <p className="font-medium">API_KEY</p>
-                              <p className="text-muted-foreground text-sm">
+                              <p className="text-sm text-muted-foreground">
                                 Production, Preview
                               </p>
                             </div>
@@ -382,7 +382,7 @@ export const Screen = () => {
                           <div className="flex items-center justify-between">
                             <div>
                               <p className="font-medium">acme/dashboard</p>
-                              <p className="text-muted-foreground text-sm">
+                              <p className="text-sm text-muted-foreground">
                                 Connected to GitHub
                               </p>
                             </div>
@@ -430,14 +430,14 @@ export const Screen = () => {
                         <div className="rounded-md border p-4">
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-3">
-                              <div className="bg-primary/10 flex h-10 w-10 items-center justify-center rounded-full">
-                                <span className="text-primary font-medium">
+                              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+                                <span className="font-medium text-primary">
                                   JD
                                 </span>
                               </div>
                               <div>
                                 <p className="font-medium">John Doe</p>
-                                <p className="text-muted-foreground text-sm">
+                                <p className="text-sm text-muted-foreground">
                                   john@example.com
                                 </p>
                               </div>
@@ -502,7 +502,7 @@ export const Screen = () => {
                               <p className="font-medium">
                                 https://api.example.com/webhook
                               </p>
-                              <p className="text-muted-foreground text-sm">
+                              <p className="text-sm text-muted-foreground">
                                 Deployment events
                               </p>
                             </div>
@@ -601,7 +601,7 @@ export const Screen = () => {
                             <Label htmlFor="db-pooling">
                               Connection Pooling
                             </Label>
-                            <p className="text-muted-foreground text-sm">
+                            <p className="text-sm text-muted-foreground">
                               Enable connection pooling for better performance.
                             </p>
                           </div>
@@ -633,7 +633,7 @@ export const Screen = () => {
                             <Label htmlFor="password-protection">
                               Password Protection
                             </Label>
-                            <p className="text-muted-foreground text-sm">
+                            <p className="text-sm text-muted-foreground">
                               Require a password to access preview deployments.
                             </p>
                           </div>
@@ -644,7 +644,7 @@ export const Screen = () => {
                             <Label htmlFor="source-protection">
                               Source Protection
                             </Label>
-                            <p className="text-muted-foreground text-sm">
+                            <p className="text-sm text-muted-foreground">
                               Prevent access to source maps and original source
                               code.
                             </p>
@@ -656,7 +656,7 @@ export const Screen = () => {
                             <Label htmlFor="git-protection">
                               Git Fork Protection
                             </Label>
-                            <p className="text-muted-foreground text-sm">
+                            <p className="text-sm text-muted-foreground">
                               Prevent deployments from forked repositories.
                             </p>
                           </div>

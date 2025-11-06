@@ -1,17 +1,18 @@
 import { PencilIcon } from 'lucide-react';
 import { Badge } from '@/components/badge';
 import { Button } from '@/components/button';
-import { TaskDate } from './task-date';
-import { OverviewProperty } from './overview-property';
-import { Issue } from '@/libraries/graphql';
 import { MemberAvatar } from '@/features/member/components/member-avatar';
+import { Issue } from '@/libraries/graphql';
+
+import { OverviewProperty } from './overview-property';
+import { TaskDate } from './task-date';
 
 export const TaskOverview = ({ issue }: { issue: Issue }) => {
   // const { open } = useEditTaskModal();
 
   return (
     <div className="col-span-1 flex flex-col gap-y-4">
-      <div className="bg-muted rounded-lg p-4">
+      <div className="rounded-lg bg-muted p-4">
         <div className="flex items-center justify-between">
           <p className="text-lg font-semibold">Overview</p>
           <Button

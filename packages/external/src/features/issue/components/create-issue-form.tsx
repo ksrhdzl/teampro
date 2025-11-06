@@ -1,10 +1,13 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
+import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { cn } from '@/libraries/utilities';
-import { Input } from '@/components/input';
+import { format } from 'date-fns';
+import { CalendarIcon, Loader2Icon } from 'lucide-react';
+import { useForm } from 'react-hook-form';
 import { Button } from '@/components/button';
+import { Calendar } from '@/components/calendar';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/card';
 import {
   Form,
@@ -14,6 +17,8 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/form';
+import { Input } from '@/components/input';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/popover';
 import {
   Select,
   SelectContent,
@@ -21,9 +26,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/select';
-import { CreateIssue, createIssueSchema } from '../schemas';
-import { useParams } from 'next/navigation';
-import { CalendarIcon, Loader2Icon } from 'lucide-react';
+import { Textarea } from '@/components/textarea';
+import { MemberAvatar } from '@/features/member/components/member-avatar';
+import { ProjectAvatar } from '@/features/project/components/project-avatar';
 import {
   IssuesDocument,
   IssueStatusEnum,
@@ -37,14 +42,10 @@ import {
   useMembersQuery,
   useProjectsQuery,
 } from '@/libraries/graphql';
-import { MemberAvatar } from '@/features/member/components/member-avatar';
-import { ProjectAvatar } from '@/features/project/components/project-avatar';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/popover';
-import { Calendar } from '@/components/calendar';
-import { format } from 'date-fns';
-import { useEffect, useState } from 'react';
-import { Textarea } from '@/components/textarea';
+import { cn } from '@/libraries/utilities';
 import slugify from '@/libraries/utilities/slugify.utility';
+
+import { CreateIssue, createIssueSchema } from '../schemas';
 
 export const CreateIssueForm = ({ onCancel }: { onCancel?: () => void }) => {
   const { workspace }: { workspace: string } = useParams();
@@ -146,7 +147,7 @@ export const CreateIssueForm = ({ onCancel }: { onCancel?: () => void }) => {
     return (
       <Card className="h-[714px] w-full border-none shadow-none">
         <CardContent className="flex h-full items-center justify-center">
-          <Loader2Icon className="text-muted-foreground size-5 animate-spin" />
+          <Loader2Icon className="size-5 animate-spin text-muted-foreground" />
         </CardContent>
       </Card>
     );

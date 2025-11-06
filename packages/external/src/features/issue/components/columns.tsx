@@ -2,9 +2,11 @@
 
 import { ColumnDef } from '@tanstack/react-table';
 import { ArrowUpDown } from 'lucide-react';
-
+import { toast } from 'sonner';
 import { Badge } from '@/components/badge';
 import { Button } from '@/components/button';
+import { MemberAvatar } from '@/features/member/components/member-avatar';
+import { ProjectAvatar } from '@/features/project/components/project-avatar';
 import {
   IssuesDocument,
   MemberIssue,
@@ -12,12 +14,10 @@ import {
   useDeleteIssueMutation,
   useDeleteMemberIssueMutation,
 } from '@/libraries/graphql';
-import { MemberAvatar } from '@/features/member/components/member-avatar';
-import { TaskDate } from './task-date';
-import { ProjectAvatar } from '@/features/project/components/project-avatar';
-import { useEditIssueModal } from '../hooks/use-edit-issue-modal';
 import { useConfirmDialog } from '@/libraries/hooks/use-confirm';
-import { toast } from 'sonner';
+
+import { useEditIssueModal } from '../hooks/use-edit-issue-modal';
+import { TaskDate } from './task-date';
 
 export const columns: ColumnDef<MemberIssue>[] = [
   {
