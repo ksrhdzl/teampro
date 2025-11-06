@@ -1,5 +1,25 @@
 'use client';
 
+import { useEffect } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import {
+  Bell,
+  ChevronLeft,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  Home,
+  ListTodo,
+  LucideIcon,
+  MessagesSquare,
+  Settings2Icon,
+  Users,
+} from 'lucide-react';
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from '@/components/collapsible';
 import {
   SidebarContent,
   SidebarGroup,
@@ -12,24 +32,9 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from '@/components/sidebar';
-import {
-  ChevronLeft,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  LucideIcon,
-  Settings2Icon,
-} from 'lucide-react';
+
 import { useSidebar } from '../../hooks';
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from '@/components/collapsible';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
-import { useEffect } from 'react';
 import { Header } from './header';
-import { Bell, Home, ListTodo, MessagesSquare, Users } from 'lucide-react';
 
 export interface Route {
   title: string;

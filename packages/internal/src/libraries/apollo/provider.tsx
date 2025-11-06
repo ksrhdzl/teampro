@@ -1,9 +1,14 @@
 'use client';
 
 import React from 'react';
-import { ApolloProvider as Provider } from '@apollo/client';
-import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { concat, HttpLink } from '@apollo/client';
+import {
+  ApolloClient,
+  concat,
+  HttpLink,
+  InMemoryCache,
+  ApolloProvider as Provider,
+} from '@apollo/client';
+
 import { authMiddleware } from './middlewares';
 import { getApolloClient } from './utilities';
 

@@ -1,8 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import { useParams, usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { useParams, usePathname } from 'next/navigation';
 import {
   ChevronRightIcon,
   FileTextIcon,
@@ -13,19 +13,19 @@ import {
   UsersIcon,
 } from 'lucide-react';
 import {
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarGroup,
-  SidebarMenuSub,
-  SidebarMenuSubItem,
-  SidebarMenuSubButton,
-} from '@/components/sidebar';
-import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from '@/components/collapsible';
+import {
+  SidebarGroup,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+} from '@/components/sidebar';
 
 export const Main = () => {
   const pathname = usePathname();

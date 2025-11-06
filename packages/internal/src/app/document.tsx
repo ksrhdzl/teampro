@@ -1,5 +1,6 @@
 import '@/assets/styles/globals.css';
-import type { Viewport, Metadata } from 'next';
+
+import type { Metadata, Viewport } from 'next';
 import { cn, inter } from '@/libraries/utilities';
 
 export const metadata: Metadata = {
@@ -31,7 +32,7 @@ export default function Document({
       <body
         className={cn(
           inter.variable,
-          'font-inter bg-background relative min-h-svh w-full antialiased transition-all duration-300',
+          'relative min-h-svh w-full bg-background font-inter antialiased transition-all duration-300',
         )}
       >
         {children}

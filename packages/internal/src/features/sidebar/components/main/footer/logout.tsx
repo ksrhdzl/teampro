@@ -1,8 +1,8 @@
+import { useRouter } from 'next/navigation';
+import { ChevronRight, Loader2, LogOut } from 'lucide-react';
 import { SidebarMenuButton } from '@/components/sidebar';
 import { useLogoutMutation } from '@/libraries/graphql';
 import { deleteSession } from '@/libraries/utilities';
-import { ChevronRight, Loader2, LogOut } from 'lucide-react';
-import { useRouter } from 'next/navigation';
 
 export const Logout = () => {
   const router = useRouter();

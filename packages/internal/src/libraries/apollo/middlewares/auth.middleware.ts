@@ -1,5 +1,5 @@
-import { verifySession } from '@/libraries/utilities';
 import { ApolloLink, Observable } from '@apollo/client';
+import { verifySession } from '@/libraries/utilities';
 
 export const authMiddleware = new ApolloLink(
   (operation, forward) =>

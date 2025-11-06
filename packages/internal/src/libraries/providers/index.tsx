@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { ThemeProvider } from './theme.provider';
 import { Toaster } from '@/components/sonner';
+
+import { ApolloProvider } from '../apollo';
 import { JotaiProvider } from '../jotai';
 import { NuqsProvider } from './nuqs.provider';
-import { ApolloProvider } from '../apollo';
+import { ThemeProvider } from './theme.provider';
 
 export function Providers({
   children,

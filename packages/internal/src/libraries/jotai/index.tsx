@@ -1,6 +1,7 @@
 'use client';
 
 import { Provider } from 'jotai';
+
 import { store } from './store';
 
 export const JotaiProvider = ({ children }: { children: React.ReactNode }) => {
